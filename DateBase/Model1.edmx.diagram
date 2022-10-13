@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2facc0cfeb6e4576a6ba24ac386d2ce9" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Clients" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Employe" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Employment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Party" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Position" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Services" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sites" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Type_party" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Party_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Employe_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Employe_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Employment_Employe" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Employment_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Employment_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Party_Employment" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Party_Sites" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Party_Type_party" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
