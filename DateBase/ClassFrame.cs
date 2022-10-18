@@ -4,6 +4,6 @@ namespace DateBase
 {
     internal class ClassFrame
     {
-        public static Frame mnFrame;
+        public static Frame newFrame;
     }
 }

@@ -32,10 +32,20 @@ namespace DateBase
         public MainWindow()
         {
             InitializeComponent();
-            ClassFrame.mnFrame = frmMain;
-            ClassFrame.mnFrame.Navigate(new BlankPage());
+            ClassFrame.newFrame = frmMain;
+            ClassFrame.newFrame.Navigate(new BlankPage());
             DBase.ZE = new ZhulinaEntities();
 
+        }
+
+        private void btnAuth_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageAuth());
+        }
+
+        private void btnLog_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageLogIn());
         }
     }
 }

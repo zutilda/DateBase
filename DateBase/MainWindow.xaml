@@ -16,15 +16,19 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" Background="DarkSlateBlue" >
             <Image Source="image\logotip.png" Margin="10" Height="145" Width="260"/>
             <StackPanel Background="DarkSlateBlue">
-                <TextBlock  Text="Студия организации праздников  'Party Time'" VerticalAlignment="Center" FontSize="24" Margin="40,0,0,30" Foreground="MistyRose"/>
-                <StackPanel Margin="40"  Orientation="Horizontal" Background="DarkSlateBlue" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                    <Button x:Name="btnAuth" Content="Авторизация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom"/>
-                    <Button x:Name="btnLog" Content="Регистрация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom"/>
+                <TextBlock  Text="Студия организации праздников  'Party Time'" VerticalAlignment="Center" FontSize="24" Margin="50,40,60,0" Foreground="MistyRose"/>
+                <StackPanel Margin="0,40, 0, 0"  Orientation="Horizontal" Background="DarkSlateBlue" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <StackPanel  Margin="0,0,40, 0">
+                        <Button x:Name="btnAuth" Content="Авторизация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom" Click="btnAuth_Click"/>
+                     </StackPanel>
+                    <StackPanel >
+                        <Button x:Name="btnLog" Content="Регистрация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom" Click="btnLog_Click"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="1">
             <Frame Name="frmMain" NavigationUIVisibility="Hidden"/>
         </StackPanel>
     </Grid>

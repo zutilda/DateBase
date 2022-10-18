@@ -24,5 +24,10 @@ namespace DateBase
         {
             InitializeComponent();
         }
+
+        private void btnEntr_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
