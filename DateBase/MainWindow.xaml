@@ -5,11 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DateBase"
         mc:Ignorable="d"
-        Title="PartyTime" MinHeight="500" MinWidth="850"
+        Title="PartyTime" MinHeight="650" MinWidth="900"
         Style="{StaticResource wnd}">
     <Grid>
-        <Grid.ColumnDefinitions>
-          
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="DarkSlateBlue" >
+            <Image Source="image\logotip.png" Margin="10" Height="145" Width="260"/>
+            <StackPanel Background="DarkSlateBlue">
+                <TextBlock  Text="Студия организации праздников  'Party Time'" VerticalAlignment="Center" FontSize="24" Margin="40,0,0,30" Foreground="MistyRose"/>
+                <StackPanel Margin="40"  Orientation="Horizontal" Background="DarkSlateBlue" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Button x:Name="btnAuth" Content="Авторизация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btnLog" Content="Регистрация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Frame Name="frmMain" NavigationUIVisibility="Hidden"/>
+        </StackPanel>
     </Grid>
 </Window>

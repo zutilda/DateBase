@@ -9,5 +9,10 @@
             <Setter Property="Foreground" Value="DarkSlateBlue"/>
             <Setter Property="FontSize" Value="24"/>      
         </Style>
+        <ControlTemplate x:Key="btnMain" TargetType="Button">
+            <Border CornerRadius="10" BorderBrush="MistyRose" BorderThickness="1" Background="MistyRose" Height="40" Width="200"  Margin="5">
+                <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="DarkSlateBlue" FontSize="20"/>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>
