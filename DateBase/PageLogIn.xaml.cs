@@ -24,5 +24,10 @@ namespace DateBase
         {
             InitializeComponent();
         }
+
+        private void btnLog_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageUser());
+        }
     }
 }

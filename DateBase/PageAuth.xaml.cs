@@ -27,7 +27,8 @@ namespace DateBase
 
         private void btnEntr_Click(object sender, RoutedEventArgs e)
         {
-
+            ClassFrame.newFrame.Navigate(new PageAdmin());
+            ClassFrame.newFrame.Navigate(new PageUser());
         }
     }
 }

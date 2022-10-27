@@ -9,6 +9,55 @@
       Title="PageLogIn">
 
     <Grid>
-        
+        <StackPanel>
+            <StackPanel>
+                <StackPanel >
+                    <TextBlock Text="Регистрация" FontSize="18"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel >
+                        <GroupBox Header="Введите Имя" FontSize="24">
+                            <TextBox Name="logName"  Height="30"  Width="350" />
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel Margin="40, 0, 0, 0">
+                        <GroupBox Header="Введите Фамилию" FontSize="24">
+                            <TextBox Name="logSurname" Height="30"   Width="350"/>
+                        </GroupBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Visibility="Collapsed">
+                    <GroupBox Header="Введите Отчество" FontSize="24">
+                        <TextBox Name="logPatr"  Height="30"  Width="350" />
+                    </GroupBox>
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal" Margin="5,0,0,0">
+                    <StackPanel Width="400" Orientation="Vertical">
+                        <StackPanel >
+                            <TextBlock Text="Дата рождения" FontSize="24"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <DatePicker Name="logBirthday" FontSize="24"></DatePicker>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="40,0,0,0">
+                        <TextBlock Text="Пол:" Margin="5,5,20,5" FontSize="24"/>
+                        <RadioButton Name="logMen" Content="Мужской" FontSize="24"/>
+                        <RadioButton Name="logWomen" Content="Женский" FontSize="24"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <GroupBox Header="Логин" FontSize="24">
+                        <TextBox Name="logLogin"/>
+                    </GroupBox>
+                    <GroupBox Header="Пароль" FontSize="24">
+                        <PasswordBox Name="logPassword"/>
+                    </GroupBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" Margin="0,20,0,20">
+                <Button Name="btnLog" Content="Регистрация" Template="{StaticResource btnPage}" Click="btnLog_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
