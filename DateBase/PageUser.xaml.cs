@@ -23,6 +23,7 @@ namespace DateBase
         public PageUser()
         {
             InitializeComponent();
+            MessageBox.Show("Вход в программу успешно выполнен!\nДобро пожаловать, пользователь!");
         }
     }
 }

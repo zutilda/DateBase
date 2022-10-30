@@ -27,8 +27,28 @@ namespace DateBase
 
         private void btnEntr_Click(object sender, RoutedEventArgs e)
         {
-            ClassFrame.newFrame.Navigate(new PageAdmin());
-            ClassFrame.newFrame.Navigate(new PageUser());
+
+            int passw = autoPassword.Password.GetHashCode();
+            Employe employe = DBase.ZE.Employe.FirstOrDefault(z => z.login == autoLogin.Text && z.password == passw);
+            if (employe == null)
+            {
+                MessageBox.Show("Неправильно введен логин или пароль!");
+            }           
+            else
+            {
+                switch (employe.id_role)
+                {
+                    case 1:                       
+                        ClassFrame.newFrame.Navigate(new PageAdmin());
+                        break;
+                    case 2:                        
+                        ClassFrame.newFrame.Navigate(new PageUser());
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

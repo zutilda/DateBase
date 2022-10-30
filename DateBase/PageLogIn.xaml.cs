@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 
 // Логин: admin
-// Пароль: admin
+// Пароль: Admin_12
 namespace DateBase
 {
     /// <summary>
@@ -99,7 +99,7 @@ namespace DateBase
                                             DBase.ZE.Employe.Add(employes);
                                             DBase.ZE.SaveChanges(); 
                                             MessageBox.Show("Пользователь успешно зарегистрирован!");
-                                            ClassFrame.newFrame.Navigate(new PageUser());
+                                            ClassFrame.newFrame.Navigate(new BlankPage());
                                         }
                                         else
                                         {
