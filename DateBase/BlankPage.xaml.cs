@@ -23,6 +23,12 @@ namespace DateBase
         public BlankPage()
         {
             InitializeComponent();
+            MessageBox.Show("Вход в программу успешно выполнен!\nДобро пожаловать, администратор!");
+        }
+
+        private void btnGetList_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageAdmin());
         }
     }
 }

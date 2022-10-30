@@ -9,6 +9,8 @@
       Title="BlankPage">
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btnGetList" Content="Пользователи" Template="{StaticResource btnPage}" Click="btnGetList_Click" />
+        </StackPanel>       
     </Grid>
 </Page>

@@ -9,6 +9,6 @@
       Title="PageAdmin">
 
     <Grid>
-        <Button x:Name="Hello" Content="Приветствие" Template="{StaticResource btnPage}" Click="Hello_Click"/>
+       
     </Grid>
 </Page>

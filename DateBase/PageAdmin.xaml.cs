@@ -23,13 +23,6 @@ namespace DateBase
         public PageAdmin()
         {
             InitializeComponent();
-            MessageBox.Show("Вход в программу успешно выполнен!\nДобро пожаловать, администратор!");
-        }
-        
-
-        private void Hello_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Добро пожаловать на страницу администратора");
-        }
+        }               
     }
 }

@@ -39,13 +39,14 @@ namespace DateBase
                 switch (employe.id_role)
                 {
                     case 1:                       
-                        ClassFrame.newFrame.Navigate(new PageAdmin());
+                        ClassFrame.newFrame.Navigate(new BlankPage());
                         break;
                     case 2:                        
                         ClassFrame.newFrame.Navigate(new PageUser());
                         break;
 
                     default:
+                        MessageBox.Show("Вход не выполнен! Повторите попытку");
                         break;
                 }
             }
