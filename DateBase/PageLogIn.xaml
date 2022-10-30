@@ -26,11 +26,19 @@
                         </GroupBox>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Left" Visibility="Collapsed">
-                    <GroupBox Header="Введите Отчество" FontSize="24">
-                        <TextBox Name="logPatr"  Height="30"  Width="350" />
-                    </GroupBox>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <GroupBox Header="Введите Отчество" FontSize="24">
+                            <TextBox Name="logPatr"  Height="30"  Width="350" />
+                        </GroupBox>
+                    </StackPanel>
+                    <StackPanel Margin="40, 0, 0, 0">
+                        <GroupBox Header="Введите Номер телефона" FontSize="24">
+                            <TextBox Name="logContact"  Height="30"  Width="350" />
+                        </GroupBox>
+                    </StackPanel>
                 </StackPanel>
+
                 <StackPanel  Orientation="Horizontal" Margin="5,0,0,0">
                     <StackPanel Width="400" Orientation="Vertical">
                         <StackPanel >

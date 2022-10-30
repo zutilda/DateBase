@@ -25,7 +25,7 @@ namespace DateBase
         public string surname { get; set; }
         public string patronymic { get; set; }
         public string login { get; set; }
-        public string password { get; set; }
+        public int password { get; set; }
         public int id_role { get; set; }
         public string contact { get; set; }
         public System.DateTime birthday { get; set; }

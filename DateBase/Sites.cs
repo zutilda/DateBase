@@ -23,7 +23,8 @@ namespace DateBase
         public int id_sites { get; set; }
         public string name_sites { get; set; }
         public string adress { get; set; }
-        public Nullable<double> rent { get; set; }
+        public double rent { get; set; }
+        public string image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Party> Party { get; set; }

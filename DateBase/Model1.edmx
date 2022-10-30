@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="id_client" />
@@ -22,9 +22,9 @@
           <Property Name="id_employe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="surname" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="patronymic" Type="nchar" MaxLength="30" />
+          <Property Name="patronymic" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="login" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="password" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="int" Nullable="false" />
           <Property Name="id_role" Type="int" Nullable="false" />
           <Property Name="contact" Type="nchar" MaxLength="16" Nullable="false" />
           <Property Name="birthday" Type="date" Nullable="false" />
@@ -70,7 +70,7 @@
             <PropertyRef Name="id_role" />
           </Key>
           <Property Name="id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_role" Type="nchar" MaxLength="25" />
+          <Property Name="name_role" Type="nchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -84,9 +84,10 @@
             <PropertyRef Name="id_sites" />
           </Key>
           <Property Name="id_sites" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_sites" Type="nchar" MaxLength="30" />
-          <Property Name="adress" Type="nchar" MaxLength="70" />
-          <Property Name="rent" Type="float" />
+          <Property Name="name_sites" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="adress" Type="nchar" MaxLength="70" Nullable="false" />
+          <Property Name="rent" Type="float" Nullable="false" />
+          <Property Name="image" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -262,39 +263,87 @@
             <End Role="Party" EntitySet="Party" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ZhulinaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Model.Clients" />
+          <EntitySet Name="Employe" EntityType="Model.Employe" />
+          <EntitySet Name="Employment" EntityType="Model.Employment" />
+          <EntitySet Name="Gender" EntityType="Model.Gender" />
+          <EntitySet Name="Party" EntityType="Model.Party" />
+          <EntitySet Name="Position" EntityType="Model.Position" />
+          <EntitySet Name="Role" EntityType="Model.Role" />
+          <EntitySet Name="Services" EntityType="Model.Services" />
+          <EntitySet Name="Sites" EntityType="Model.Sites" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
+          <EntitySet Name="Type_party" EntityType="Model.Type_party" />
+          <AssociationSet Name="FK_Party_Clients" Association="Model.FK_Party_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employe_Gender" Association="Model.FK_Employe_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employe" EntitySet="Employe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employe_Role" Association="Model.FK_Employe_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employe" EntitySet="Employe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employment_Employe" Association="Model.FK_Employment_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Employment" EntitySet="Employment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employment_Position" Association="Model.FK_Employment_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Employment" EntitySet="Employment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employment_Services" Association="Model.FK_Employment_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Employment" EntitySet="Employment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Employment" Association="Model.FK_Party_Employment">
+            <End Role="Employment" EntitySet="Employment" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Sites" Association="Model.FK_Party_Sites">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_Type_party" Association="Model.FK_Party_Type_party">
+            <End Role="Type_party" EntitySet="Type_party" />
+            <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="id_client" />
           </Key>
           <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="surname" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
           <Property Name="patronymic" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
-          <Property Name="contacts" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Party" Relationship="Self.FK_Party_Clients" FromRole="Clients" ToRole="Party" />
+          <Property Name="contacts" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Party" Relationship="Model.FK_Party_Clients" FromRole="Clients" ToRole="Party" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
             <PropertyRef Name="id_employe" />
           </Key>
           <Property Name="id_employe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="surname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="patronymic" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="login" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="patronymic" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="Int32" Nullable="false" />
           <Property Name="id_role" Type="Int32" Nullable="false" />
-          <Property Name="contact" Type="String" MaxLength="16" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="contact" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="true" />
           <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_gender" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Employe_Gender" FromRole="Employe" ToRole="Gender" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Employe_Role" FromRole="Employe" ToRole="Role" />
-          <NavigationProperty Name="Employment" Relationship="Self.FK_Employment_Employe" FromRole="Employe" ToRole="Employment" />
+          <NavigationProperty Name="Gender" Relationship="Model.FK_Employe_Gender" FromRole="Employe" ToRole="Gender" />
+          <NavigationProperty Name="Role" Relationship="Model.FK_Employe_Role" FromRole="Employe" ToRole="Role" />
+          <NavigationProperty Name="Employment" Relationship="Model.FK_Employment_Employe" FromRole="Employe" ToRole="Employment" />
         </EntityType>
         <EntityType Name="Employment">
           <Key>
@@ -305,18 +354,18 @@
           <Property Name="id_position" Type="Int32" Nullable="false" />
           <Property Name="id_service" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Employe" Relationship="Self.FK_Employment_Employe" FromRole="Employment" ToRole="Employe" />
-          <NavigationProperty Name="Position" Relationship="Self.FK_Employment_Position" FromRole="Employment" ToRole="Position" />
-          <NavigationProperty Name="Services" Relationship="Self.FK_Employment_Services" FromRole="Employment" ToRole="Services" />
-          <NavigationProperty Name="Party" Relationship="Self.FK_Party_Employment" FromRole="Employment" ToRole="Party" />
+          <NavigationProperty Name="Employe" Relationship="Model.FK_Employment_Employe" FromRole="Employment" ToRole="Employe" />
+          <NavigationProperty Name="Position" Relationship="Model.FK_Employment_Position" FromRole="Employment" ToRole="Position" />
+          <NavigationProperty Name="Services" Relationship="Model.FK_Employment_Services" FromRole="Employment" ToRole="Services" />
+          <NavigationProperty Name="Party" Relationship="Model.FK_Party_Employment" FromRole="Employment" ToRole="Party" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="id_gender" />
           </Key>
           <Property Name="id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="gender1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employe" Relationship="Self.FK_Employe_Gender" FromRole="Gender" ToRole="Employe" />
+          <Property Name="gender1" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employe" Relationship="Model.FK_Employe_Gender" FromRole="Gender" ToRole="Employe" />
         </EntityType>
         <EntityType Name="Party">
           <Key>
@@ -328,50 +377,51 @@
           <Property Name="id_employment" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_client" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Clients" Relationship="Self.FK_Party_Clients" FromRole="Party" ToRole="Clients" />
-          <NavigationProperty Name="Employment" Relationship="Self.FK_Party_Employment" FromRole="Party" ToRole="Employment" />
-          <NavigationProperty Name="Sites" Relationship="Self.FK_Party_Sites" FromRole="Party" ToRole="Sites" />
-          <NavigationProperty Name="Type_party" Relationship="Self.FK_Party_Type_party" FromRole="Party" ToRole="Type_party" />
+          <NavigationProperty Name="Clients" Relationship="Model.FK_Party_Clients" FromRole="Party" ToRole="Clients" />
+          <NavigationProperty Name="Employment" Relationship="Model.FK_Party_Employment" FromRole="Party" ToRole="Employment" />
+          <NavigationProperty Name="Sites" Relationship="Model.FK_Party_Sites" FromRole="Party" ToRole="Sites" />
+          <NavigationProperty Name="Type_party" Relationship="Model.FK_Party_Type_party" FromRole="Party" ToRole="Type_party" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
             <PropertyRef Name="id_positions" />
           </Key>
           <Property Name="id_positions" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_position" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employment" Relationship="Self.FK_Employment_Position" FromRole="Position" ToRole="Employment" />
+          <Property Name="name_position" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employment" Relationship="Model.FK_Employment_Position" FromRole="Position" ToRole="Employment" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="id_role" />
           </Key>
           <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_role" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Employe" Relationship="Self.FK_Employe_Role" FromRole="Role" ToRole="Employe" />
+          <Property Name="name_role" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employe" Relationship="Model.FK_Employe_Role" FromRole="Role" ToRole="Employe" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="id_services" />
           </Key>
           <Property Name="id_services" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_services" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Employment" Relationship="Self.FK_Employment_Services" FromRole="Services" ToRole="Employment" />
+          <Property Name="name_services" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Employment" Relationship="Model.FK_Employment_Services" FromRole="Services" ToRole="Employment" />
         </EntityType>
         <EntityType Name="Sites">
           <Key>
             <PropertyRef Name="id_sites" />
           </Key>
           <Property Name="id_sites" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_sites" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="adress" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
-          <Property Name="rent" Type="Double" />
-          <NavigationProperty Name="Party" Relationship="Self.FK_Party_Sites" FromRole="Sites" ToRole="Party" />
+          <Property Name="name_sites" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="adress" Type="String" Nullable="false" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="rent" Type="Double" Nullable="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Party" Relationship="Model.FK_Party_Sites" FromRole="Sites" ToRole="Party" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -382,12 +432,12 @@
             <PropertyRef Name="id_type" />
           </Key>
           <Property Name="id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_type" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Party" Relationship="Self.FK_Party_Type_party" FromRole="Type_party" ToRole="Party" />
+          <Property Name="name_type" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Party" Relationship="Model.FK_Party_Type_party" FromRole="Type_party" ToRole="Party" />
         </EntityType>
         <Association Name="FK_Party_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
-          <End Role="Party" Type="Self.Party" Multiplicity="*" />
+          <End Type="Model.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="Model.Party" Role="Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clients">
               <PropertyRef Name="id_client" />
@@ -398,8 +448,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employe_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+          <End Type="Model.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="Model.Employe" Role="Employe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gender">
               <PropertyRef Name="id_gender" />
@@ -410,8 +460,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employe_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
+          <End Type="Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="Model.Employe" Role="Employe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="id_role" />
@@ -422,8 +472,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employment_Employe">
-          <End Role="Employe" Type="Self.Employe" Multiplicity="1" />
-          <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
+          <End Type="Model.Employe" Role="Employe" Multiplicity="1" />
+          <End Type="Model.Employment" Role="Employment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employe">
               <PropertyRef Name="id_employe" />
@@ -434,8 +484,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employment_Position">
-          <End Role="Position" Type="Self.Position" Multiplicity="1" />
-          <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
+          <End Type="Model.Position" Role="Position" Multiplicity="1" />
+          <End Type="Model.Employment" Role="Employment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Position">
               <PropertyRef Name="id_positions" />
@@ -446,8 +496,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employment_Services">
-          <End Role="Services" Type="Self.Services" Multiplicity="1" />
-          <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
+          <End Type="Model.Services" Role="Services" Multiplicity="1" />
+          <End Type="Model.Employment" Role="Employment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Services">
               <PropertyRef Name="id_services" />
@@ -458,8 +508,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Employment">
-          <End Role="Employment" Type="Self.Employment" Multiplicity="1" />
-          <End Role="Party" Type="Self.Party" Multiplicity="*" />
+          <End Type="Model.Employment" Role="Employment" Multiplicity="1" />
+          <End Type="Model.Party" Role="Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employment">
               <PropertyRef Name="id_employment" />
@@ -470,8 +520,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Sites">
-          <End Role="Sites" Type="Self.Sites" Multiplicity="1" />
-          <End Role="Party" Type="Self.Party" Multiplicity="*" />
+          <End Type="Model.Sites" Role="Sites" Multiplicity="1" />
+          <End Type="Model.Party" Role="Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sites">
               <PropertyRef Name="id_sites" />
@@ -482,8 +532,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Type_party">
-          <End Role="Type_party" Type="Self.Type_party" Multiplicity="1" />
-          <End Role="Party" Type="Self.Party" Multiplicity="*" />
+          <End Type="Model.Type_party" Role="Type_party" Multiplicity="1" />
+          <End Type="Model.Party" Role="Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type_party">
               <PropertyRef Name="id_type" />
@@ -493,55 +543,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ZhulinaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Clients" EntityType="Self.Clients" />
-          <EntitySet Name="Employe" EntityType="Self.Employe" />
-          <EntitySet Name="Employment" EntityType="Self.Employment" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="Party" EntityType="Self.Party" />
-          <EntitySet Name="Position" EntityType="Self.Position" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="Services" EntityType="Self.Services" />
-          <EntitySet Name="Sites" EntityType="Self.Sites" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Type_party" EntityType="Self.Type_party" />
-          <AssociationSet Name="FK_Party_Clients" Association="Self.FK_Party_Clients">
-            <End Role="Clients" EntitySet="Clients" />
-            <End Role="Party" EntitySet="Party" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employe_Gender" Association="Self.FK_Employe_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Employe" EntitySet="Employe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employe_Role" Association="Self.FK_Employe_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Employe" EntitySet="Employe" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employment_Employe" Association="Self.FK_Employment_Employe">
-            <End Role="Employe" EntitySet="Employe" />
-            <End Role="Employment" EntitySet="Employment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employment_Position" Association="Self.FK_Employment_Position">
-            <End Role="Position" EntitySet="Position" />
-            <End Role="Employment" EntitySet="Employment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employment_Services" Association="Self.FK_Employment_Services">
-            <End Role="Services" EntitySet="Services" />
-            <End Role="Employment" EntitySet="Employment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Party_Employment" Association="Self.FK_Party_Employment">
-            <End Role="Employment" EntitySet="Employment" />
-            <End Role="Party" EntitySet="Party" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Party_Sites" Association="Self.FK_Party_Sites">
-            <End Role="Sites" EntitySet="Sites" />
-            <End Role="Party" EntitySet="Party" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Party_Type_party" Association="Self.FK_Party_Type_party">
-            <End Role="Type_party" EntitySet="Type_party" />
-            <End Role="Party" EntitySet="Party" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -551,111 +552,112 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="Model.Clients">
               <MappingFragment StoreEntitySet="Clients">
-                <ScalarProperty Name="id_client" ColumnName="id_client" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
                 <ScalarProperty Name="contacts" ColumnName="contacts" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employe">
             <EntityTypeMapping TypeName="Model.Employe">
               <MappingFragment StoreEntitySet="Employe">
-                <ScalarProperty Name="id_employe" ColumnName="id_employe" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="id_role" ColumnName="id_role" />
-                <ScalarProperty Name="contact" ColumnName="contact" />
-                <ScalarProperty Name="birthday" ColumnName="birthday" />
                 <ScalarProperty Name="id_gender" ColumnName="id_gender" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_employe" ColumnName="id_employe" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employment">
             <EntityTypeMapping TypeName="Model.Employment">
               <MappingFragment StoreEntitySet="Employment">
-                <ScalarProperty Name="id_employment" ColumnName="id_employment" />
-                <ScalarProperty Name="id_employe" ColumnName="id_employe" />
-                <ScalarProperty Name="id_position" ColumnName="id_position" />
-                <ScalarProperty Name="id_service" ColumnName="id_service" />
                 <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="id_service" ColumnName="id_service" />
+                <ScalarProperty Name="id_position" ColumnName="id_position" />
+                <ScalarProperty Name="id_employe" ColumnName="id_employe" />
+                <ScalarProperty Name="id_employment" ColumnName="id_employment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gender">
             <EntityTypeMapping TypeName="Model.Gender">
               <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
                 <ScalarProperty Name="gender1" ColumnName="gender" />
+                <ScalarProperty Name="id_gender" ColumnName="id_gender" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Party">
             <EntityTypeMapping TypeName="Model.Party">
               <MappingFragment StoreEntitySet="Party">
-                <ScalarProperty Name="id_party" ColumnName="id_party" />
-                <ScalarProperty Name="id_type" ColumnName="id_type" />
-                <ScalarProperty Name="id_sites" ColumnName="id_sites" />
-                <ScalarProperty Name="id_employment" ColumnName="id_employment" />
-                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id_employment" ColumnName="id_employment" />
+                <ScalarProperty Name="id_sites" ColumnName="id_sites" />
+                <ScalarProperty Name="id_type" ColumnName="id_type" />
+                <ScalarProperty Name="id_party" ColumnName="id_party" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Position">
             <EntityTypeMapping TypeName="Model.Position">
               <MappingFragment StoreEntitySet="Position">
-                <ScalarProperty Name="id_positions" ColumnName="id_positions" />
                 <ScalarProperty Name="name_position" ColumnName="name_position" />
+                <ScalarProperty Name="id_positions" ColumnName="id_positions" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="Model.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="id_role" ColumnName="id_role" />
                 <ScalarProperty Name="name_role" ColumnName="name_role" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="Model.Services">
               <MappingFragment StoreEntitySet="Services">
-                <ScalarProperty Name="id_services" ColumnName="id_services" />
                 <ScalarProperty Name="name_services" ColumnName="name_services" />
+                <ScalarProperty Name="id_services" ColumnName="id_services" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sites">
             <EntityTypeMapping TypeName="Model.Sites">
               <MappingFragment StoreEntitySet="Sites">
-                <ScalarProperty Name="id_sites" ColumnName="id_sites" />
-                <ScalarProperty Name="name_sites" ColumnName="name_sites" />
-                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="rent" ColumnName="rent" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="name_sites" ColumnName="name_sites" />
+                <ScalarProperty Name="id_sites" ColumnName="id_sites" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Type_party">
             <EntityTypeMapping TypeName="Model.Type_party">
               <MappingFragment StoreEntitySet="Type_party">
-                <ScalarProperty Name="id_type" ColumnName="id_type" />
                 <ScalarProperty Name="name_type" ColumnName="name_type" />
+                <ScalarProperty Name="id_type" ColumnName="id_type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
