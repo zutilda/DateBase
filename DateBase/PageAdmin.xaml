@@ -44,7 +44,7 @@
                     <Button x:Name="asc" Content="По возрастанию" Template="{StaticResource btnPage}" Margin="5" Click="asc_Click"/>
                 </StackPanel>
             </StackPanel>
-            <Button x:Name="btnUpd" Content="Очистить фильтры" Margin="5" Template="{StaticResource btnPage}" />
+            <Button x:Name="btnUpd" Content="Очистить фильтры" Margin="5" Template="{StaticResource btnPage}" Click="btnUpd_Click" />
             <StackPanel>
                 <DataGrid x:Name="gridUser" FontSize="18" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
@@ -60,7 +60,7 @@
             </StackPanel>           
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Left">
-            <Button x:Name="btnBack" Content="Назад" Margin="5" Template="{StaticResource btnPage}" />
+            <Button x:Name="btnBack" Content="Назад" Margin="5" Template="{StaticResource btnPage}" Click="btnBack_Click" />
         </StackPanel>
     </Grid>
 </Page>

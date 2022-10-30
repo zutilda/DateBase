@@ -38,10 +38,12 @@ namespace DateBase
             {
                 switch (employe.id_role)
                 {
-                    case 1:                       
+                    case 1:
+                        MessageBox.Show("Вход в программу успешно выполнен!\nДобро пожаловать, администратор!");
                         ClassFrame.newFrame.Navigate(new BlankPage());
                         break;
-                    case 2:                        
+                    case 2:
+                        MessageBox.Show("Вход в программу успешно выполнен!\nДобро пожаловать, пользователь!");
                         ClassFrame.newFrame.Navigate(new PageUser());
                         break;
 

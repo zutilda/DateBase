@@ -22,8 +22,8 @@ namespace DateBase
     {
         public BlankPage()
         {
-            InitializeComponent();
-            MessageBox.Show("Вход в программу успешно выполнен!\nДобро пожаловать, администратор!");
+            InitializeComponent();       
+           
         }
 
         private void btnGetList_Click(object sender, RoutedEventArgs e)

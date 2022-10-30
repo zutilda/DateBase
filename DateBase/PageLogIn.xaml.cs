@@ -120,5 +120,10 @@ namespace DateBase
 
             }
         }
+
+        private void logMen_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
