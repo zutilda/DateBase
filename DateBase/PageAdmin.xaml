@@ -9,6 +9,58 @@
       Title="PageAdmin">
 
     <Grid>
-       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <StackPanel>
+                <TextBlock  Text="Просмотр зарегистрированных пользователей" HorizontalAlignment="Center" FontSize="32" Foreground="DarkSlateBlue"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Поиск:" VerticalAlignment="Center" FontSize="24" Foreground="DarkSlateBlue" Margin="5"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Имя" VerticalAlignment="Center" FontSize="24" Margin="0,0,20,0" Foreground="DarkSlateBlue"/>
+                        <TextBox x:Name="SearchName"  Height="40"  Width="180"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Логин" VerticalAlignment="Center" FontSize="24" Foreground="DarkSlateBlue" Margin="5"/>
+                        <TextBox x:Name="SearchLog"  Height="40"  Width="180"/>
+                    </StackPanel>
+                    <Button x:Name="btnSearch" Content="Поиск" Template="{StaticResource btnPage}" Margin="10" Click="btnSearch_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Фильтрация:" VerticalAlignment="Center" FontSize="24" Foreground="DarkSlateBlue" Margin="5"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Пол" VerticalAlignment="Center" FontSize="24" Margin="10" Foreground="DarkSlateBlue"/>
+                        <ComboBox x:Name="SearchGender" Height="40"  Width="180"/>
+                    </StackPanel>
+                    <Button x:Name="btnSearchG" Content="Поиск" Template="{StaticResource btnPage}" Margin="10" Click="btnSearchG_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Сортировка по фамилии:" VerticalAlignment="Center" FontSize="24" Foreground="DarkSlateBlue" Margin="5"/>
+                    <Button x:Name="desk" Content="По убыванию" Template="{StaticResource btnPage}" Margin="5" Click="desk_Click"/>
+                    <Button x:Name="asc" Content="По возрастанию" Template="{StaticResource btnPage}" Margin="5" Click="asc_Click"/>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="btnUpd" Content="Очистить фильтры" Margin="5" Template="{StaticResource btnPage}" />
+            <StackPanel>
+                <DataGrid x:Name="gridUser" FontSize="18" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding surname}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding name}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding patronymic}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Пол" Binding="{Binding Gender.gender}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday, StringFormat=dd.MM.yyyy}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Логин" Binding="{Binding login}" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding contact}" Width="*"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>           
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
+            <Button x:Name="btnBack" Content="Назад" Margin="5" Template="{StaticResource btnPage}" />
+        </StackPanel>
     </Grid>
 </Page>

@@ -23,6 +23,25 @@ namespace DateBase
         public PageAdmin()
         {
             InitializeComponent();
-        }               
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSearchG_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void desk_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void asc_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
