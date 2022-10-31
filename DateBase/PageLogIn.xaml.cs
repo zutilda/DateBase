@@ -99,7 +99,7 @@ namespace DateBase
                                             DBase.ZE.Employe.Add(employes);
                                             DBase.ZE.SaveChanges(); 
                                             MessageBox.Show("Пользователь успешно зарегистрирован!");
-                                            ClassFrame.newFrame.Navigate(new BlankPage());
+                                            ClassFrame.newFrame.Navigate(new PageUser());
                                         }
                                         else
                                         {
