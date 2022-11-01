@@ -9,8 +9,14 @@
       Title="BlankPage">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="btnGetList" Content="Пользователи" Template="{StaticResource btnPage}" Click="btnGetList_Click" />
-        </StackPanel>       
+        <StackPanel Margin="10,180,0,0" HorizontalAlignment="Left">
+            <Button x:Name="btnGetList" Content="Пользователи" Template="{StaticResource btnPage}" Click="btnGetList_Click" />           
+        </StackPanel>
+        <StackPanel Margin="0,180,0,0"  HorizontalAlignment="Center">           
+            <Button x:Name="btnGetParty" Content="Мероприятия" Template="{StaticResource btnPage}" Click="btnGetParty_Click"/>
+        </StackPanel>
+        <StackPanel Margin="0,180,10,0"  HorizontalAlignment="Right">
+            <Button x:Name="btnGetEmployement" Content="Занятость" Template="{StaticResource btnPage}" Click="btnGetEmployement_Click"  />
+        </StackPanel>
     </Grid>
 </Page>

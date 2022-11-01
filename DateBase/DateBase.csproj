@@ -92,8 +92,14 @@
     <Compile Include="PageAuth.xaml.cs">
       <DependentUpon>PageAuth.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageEmployement.xaml.cs">
+      <DependentUpon>PageEmployement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageLogIn.xaml.cs">
       <DependentUpon>PageLogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageParty.xaml.cs">
+      <DependentUpon>PageParty.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageUser.xaml.cs">
       <DependentUpon>PageUser.xaml</DependentUpon>
@@ -143,7 +149,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PageEmployement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageLogIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageParty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

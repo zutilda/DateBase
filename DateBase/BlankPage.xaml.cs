@@ -30,5 +30,15 @@ namespace DateBase
         {
             ClassFrame.newFrame.Navigate(new PageAdmin());
         }
+
+        private void btnGetParty_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageParty());
+        }
+
+        private void btnGetEmployement_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageEmployement());
+        }
     }
 }
