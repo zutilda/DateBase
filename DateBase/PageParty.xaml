@@ -7,14 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageParty">
-
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImage" UriSource="/image/logotip.png"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="11*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="0" Height="500"  x:Name="ListParty" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+        <ListView Grid.Row="0" Height="400"  x:Name="ListParty" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -22,8 +24,8 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="DeepPink" Background="{Binding ColorData}">
-                        <Grid Width="365" Height="350">
+                    <Border Padding="10" Height="350" CornerRadius="20" BorderThickness="1" BorderBrush="DeepPink" Background="{Binding ColorData}">
+                        <Grid Width="400" Height="350">
                             <StackPanel>
                                 <TextBlock Text="Мероприятие" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
                                 <StackPanel Orientation="Vertical" Margin="5">
@@ -42,6 +44,7 @@
                                     <StackPanel Orientation="Vertical" >
                                         <TextBlock Text="Место проведения:" HorizontalAlignment="Center"/>
                                         <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Text="{Binding Sites.name_sites}"/>
+                                        <Image Width="100" Height="100" Source="{Binding Sites.image, TargetNullValue={StaticResource defaultImage}}"/>
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical">
                                         <TextBlock Text="Предоставляемые услуги: " HorizontalAlignment="Center"/>
@@ -54,9 +57,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Margin="10">
             <Grid>
-                <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" />
+                <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" Click="btnBack_Click" />
                 <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" />
             </Grid>
         </StackPanel>

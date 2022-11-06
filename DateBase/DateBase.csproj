@@ -213,6 +213,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\logotip.png" />
+    <Resource Include="image\dekas.png" />
+    <Resource Include="image\kamelot.png" />
+    <Resource Include="image\picasso.jpg" />
+    <Resource Include="image\premier.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

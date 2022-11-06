@@ -31,4 +31,6 @@ namespace DateBase
             ClassFrame.newFrame.Navigate(new BlankPage());
         }
     }
+
+   
 }

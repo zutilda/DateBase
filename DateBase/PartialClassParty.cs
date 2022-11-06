@@ -36,19 +36,19 @@ namespace DateBase
             {
                 if (date.Date == DateTime.Now.Date) //сегодня
                 {
-                    return Brushes.Blue;
+                    return Brushes.LightCyan;
                 }
                 else if (date.Date >= DateTime.Now.Date.AddDays(1) && date.Date <= DateTime.Now.Date.AddDays(5))//в ближайшие дни
                 {
-                    return Brushes.Green;
+                    return Brushes.LightBlue;
                 }
                 else if (date.Date <= DateTime.Now.Date)//прошедшие праздники
                 {
-                    return Brushes.Gray;
+                    return Brushes.LightGray;
                 }
-                else // будующие но далеко
+                else // будущeе, но далекоe
                 {
-                    return Brushes.Yellow;
+                    return Brushes.LightGreen;
                 }
             }
         }

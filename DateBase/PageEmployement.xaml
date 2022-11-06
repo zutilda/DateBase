@@ -7,17 +7,36 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageEmployement">
-
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="11*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
 
-        </StackPanel>
-        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
-            <Button x:Name="btnBack" Content="Назад" Margin="5" Template="{StaticResource btnPage}" Click="btnBack_Click" />
+        <ListView Grid.Row="0" Height="300"  x:Name="ListImployement" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" Height="200" BorderThickness="1" BorderBrush="DeepPink" Background="MistyRose">
+                        <Grid Width="365" Height="350">
+                            <StackPanel>
+                                <TextBlock Text="Занятость сотрудника:" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding InformEmploe}"/>
+                             </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="1" Margin="10">
+            <Grid>
+                <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" Click="btnBack_Click" />
+                <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>
