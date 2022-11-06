@@ -16,7 +16,7 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="0" Height="400"  x:Name="ListParty" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+        <ListView Grid.Row="0" Height="450"  x:Name="ListParty" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -24,10 +24,11 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Padding="10" Height="350" CornerRadius="20" BorderThickness="1" BorderBrush="DeepPink" Background="{Binding ColorData}">
+                    <Border Padding="5" Height="400" Width="450" CornerRadius="20" BorderThickness="1" BorderBrush="DeepPink" Background="{Binding ColorData}">
                         <Grid Width="400" Height="350">
+                            <ScrollViewer ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <StackPanel>
-                                <TextBlock Text="Мероприятие" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
+                                <TextBlock Text="Мероприятие" HorizontalAlignment="Center" FontSize="20" FontWeight ="Bold"/>
                                 <StackPanel Orientation="Vertical" Margin="5">
                                     <StackPanel Orientation="Vertical" >
                                         <TextBlock Text="Клиент:" HorizontalAlignment="Center"/>
@@ -52,6 +53,7 @@
                                     </StackPanel>
                                 </StackPanel>    
                             </StackPanel>
+                            </ScrollViewer>
                         </Grid>
                     </Border>
                 </DataTemplate>
