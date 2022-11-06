@@ -14,15 +14,21 @@ namespace DateBase
     
     public partial class Party
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Party()
+        {
+            this.Employment = new HashSet<Employment>();
+        }
+    
         public int id_party { get; set; }
         public int id_type { get; set; }
         public int id_sites { get; set; }
-        public int id_employment { get; set; }
         public System.DateTime date { get; set; }
         public int id_client { get; set; }
     
         public virtual Clients Clients { get; set; }
-        public virtual Employment Employment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employment> Employment { get; set; }
         public virtual Sites Sites { get; set; }
         public virtual Type_party Type_party { get; set; }
     }

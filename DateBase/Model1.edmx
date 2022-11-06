@@ -26,7 +26,7 @@
           <Property Name="login" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="password" Type="int" Nullable="false" />
           <Property Name="id_role" Type="int" Nullable="false" />
-          <Property Name="contact" Type="nchar" MaxLength="16" Nullable="false" />
+          <Property Name="contact" Type="nchar" MaxLength="11" Nullable="false" />
           <Property Name="birthday" Type="date" Nullable="false" />
           <Property Name="id_gender" Type="int" Nullable="false" />
         </EntityType>
@@ -39,6 +39,7 @@
           <Property Name="id_position" Type="int" Nullable="false" />
           <Property Name="id_service" Type="int" Nullable="false" />
           <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="id_party" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -54,7 +55,6 @@
           <Property Name="id_party" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_type" Type="int" Nullable="false" />
           <Property Name="id_sites" Type="int" Nullable="false" />
-          <Property Name="id_employment" Type="int" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
           <Property Name="id_client" Type="int" Nullable="false" />
         </EntityType>
@@ -142,6 +142,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employment_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="1" />
+          <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="id_party" />
+            </Principal>
+            <Dependent Role="Employment">
+              <PropertyRef Name="id_party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employment_Position">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
           <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
@@ -175,18 +187,6 @@
             </Principal>
             <Dependent Role="Party">
               <PropertyRef Name="id_client" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Party_Employment">
-          <End Role="Employment" Type="Self.Employment" Multiplicity="1" />
-          <End Role="Party" Type="Self.Party" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employment">
-              <PropertyRef Name="id_employment" />
-            </Principal>
-            <Dependent Role="Party">
-              <PropertyRef Name="id_employment" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -238,6 +238,10 @@
             <End Role="Employe" EntitySet="Employe" />
             <End Role="Employment" EntitySet="Employment" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employment_Party" Association="Self.FK_Employment_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Employment" EntitySet="Employment" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employment_Position" Association="Self.FK_Employment_Position">
             <End Role="Position" EntitySet="Position" />
             <End Role="Employment" EntitySet="Employment" />
@@ -248,10 +252,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Party_Clients" Association="Self.FK_Party_Clients">
             <End Role="Clients" EntitySet="Clients" />
-            <End Role="Party" EntitySet="Party" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Party_Employment" Association="Self.FK_Party_Employment">
-            <End Role="Employment" EntitySet="Employment" />
             <End Role="Party" EntitySet="Party" />
           </AssociationSet>
           <AssociationSet Name="FK_Party_Sites" Association="Self.FK_Party_Sites">
@@ -295,6 +295,10 @@
             <End Role="Employe" EntitySet="Employe" />
             <End Role="Employment" EntitySet="Employment" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employment_Party" Association="Model.FK_Employment_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="Employment" EntitySet="Employment" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employment_Position" Association="Model.FK_Employment_Position">
             <End Role="Position" EntitySet="Position" />
             <End Role="Employment" EntitySet="Employment" />
@@ -302,10 +306,6 @@
           <AssociationSet Name="FK_Employment_Services" Association="Model.FK_Employment_Services">
             <End Role="Services" EntitySet="Services" />
             <End Role="Employment" EntitySet="Employment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Party_Employment" Association="Model.FK_Party_Employment">
-            <End Role="Employment" EntitySet="Employment" />
-            <End Role="Party" EntitySet="Party" />
           </AssociationSet>
           <AssociationSet Name="FK_Party_Sites" Association="Model.FK_Party_Sites">
             <End Role="Sites" EntitySet="Sites" />
@@ -338,7 +338,7 @@
           <Property Name="login" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="password" Type="Int32" Nullable="false" />
           <Property Name="id_role" Type="Int32" Nullable="false" />
-          <Property Name="contact" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="contact" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
           <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_gender" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Gender" Relationship="Model.FK_Employe_Gender" FromRole="Employe" ToRole="Gender" />
@@ -354,10 +354,11 @@
           <Property Name="id_position" Type="Int32" Nullable="false" />
           <Property Name="id_service" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="id_party" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employe" Relationship="Model.FK_Employment_Employe" FromRole="Employment" ToRole="Employe" />
+          <NavigationProperty Name="Party" Relationship="Model.FK_Employment_Party" FromRole="Employment" ToRole="Party" />
           <NavigationProperty Name="Position" Relationship="Model.FK_Employment_Position" FromRole="Employment" ToRole="Position" />
           <NavigationProperty Name="Services" Relationship="Model.FK_Employment_Services" FromRole="Employment" ToRole="Services" />
-          <NavigationProperty Name="Party" Relationship="Model.FK_Party_Employment" FromRole="Employment" ToRole="Party" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -374,11 +375,10 @@
           <Property Name="id_party" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_type" Type="Int32" Nullable="false" />
           <Property Name="id_sites" Type="Int32" Nullable="false" />
-          <Property Name="id_employment" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_client" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clients" Relationship="Model.FK_Party_Clients" FromRole="Party" ToRole="Clients" />
-          <NavigationProperty Name="Employment" Relationship="Model.FK_Party_Employment" FromRole="Party" ToRole="Employment" />
+          <NavigationProperty Name="Employment" Relationship="Model.FK_Employment_Party" FromRole="Party" ToRole="Employment" />
           <NavigationProperty Name="Sites" Relationship="Model.FK_Party_Sites" FromRole="Party" ToRole="Sites" />
           <NavigationProperty Name="Type_party" Relationship="Model.FK_Party_Type_party" FromRole="Party" ToRole="Type_party" />
         </EntityType>
@@ -483,6 +483,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employment_Party">
+          <End Type="Model.Party" Role="Party" Multiplicity="1" />
+          <End Type="Model.Employment" Role="Employment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="id_party" />
+            </Principal>
+            <Dependent Role="Employment">
+              <PropertyRef Name="id_party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employment_Position">
           <End Type="Model.Position" Role="Position" Multiplicity="1" />
           <End Type="Model.Employment" Role="Employment" Multiplicity="*" />
@@ -504,18 +516,6 @@
             </Principal>
             <Dependent Role="Employment">
               <PropertyRef Name="id_service" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Party_Employment">
-          <End Type="Model.Employment" Role="Employment" Multiplicity="1" />
-          <End Type="Model.Party" Role="Party" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Employment">
-              <PropertyRef Name="id_employment" />
-            </Principal>
-            <Dependent Role="Party">
-              <PropertyRef Name="id_employment" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -543,7 +543,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -579,6 +579,7 @@
           <EntitySetMapping Name="Employment">
             <EntityTypeMapping TypeName="Model.Employment">
               <MappingFragment StoreEntitySet="Employment">
+                <ScalarProperty Name="id_party" ColumnName="id_party" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="id_service" ColumnName="id_service" />
                 <ScalarProperty Name="id_position" ColumnName="id_position" />
@@ -600,7 +601,6 @@
               <MappingFragment StoreEntitySet="Party">
                 <ScalarProperty Name="id_client" ColumnName="id_client" />
                 <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="id_employment" ColumnName="id_employment" />
                 <ScalarProperty Name="id_sites" ColumnName="id_sites" />
                 <ScalarProperty Name="id_type" ColumnName="id_type" />
                 <ScalarProperty Name="id_party" ColumnName="id_party" />

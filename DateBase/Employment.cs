@@ -14,22 +14,16 @@ namespace DateBase
     
     public partial class Employment
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employment()
-        {
-            this.Party = new HashSet<Party>();
-        }
-    
         public int id_employment { get; set; }
         public int id_employe { get; set; }
         public int id_position { get; set; }
         public int id_service { get; set; }
         public double price { get; set; }
+        public int id_party { get; set; }
     
         public virtual Employe Employe { get; set; }
+        public virtual Party Party { get; set; }
         public virtual Position Position { get; set; }
         public virtual Services Services { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Party> Party { get; set; }
     }
 }

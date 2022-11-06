@@ -23,6 +23,7 @@ namespace DateBase
         public PageParty()
         {
             InitializeComponent();
+            ListParty.ItemsSource = DBase.ZE.Party.ToList();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

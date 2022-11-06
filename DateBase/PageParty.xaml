@@ -10,14 +10,55 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="11*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            
-        </StackPanel>
-        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
-            <Button x:Name="btnBack" Content="Назад" Margin="5" Template="{StaticResource btnPage}" Click="btnBack_Click" />
+
+        <ListView Grid.Row="0" Height="500"  x:Name="ListParty" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="DeepPink" Background="{Binding ColorData}">
+                        <Grid Width="365" Height="350">
+                            <StackPanel>
+                                <TextBlock Text="Мероприятие" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <StackPanel Orientation="Vertical" >
+                                        <TextBlock Text="Клиент:" HorizontalAlignment="Center"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding FullNameClient}" />
+                                    </StackPanel>                                   
+                                    <StackPanel Orientation="Vertical" >
+                                        <TextBlock Text="Дата:" HorizontalAlignment="Center"/>
+                                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Text="{Binding date, StringFormat={}dd.MM.yyyy}"/> 
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" >
+                                        <TextBlock Text="Вид мероприятия: " HorizontalAlignment="Center"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding Type_party.name_type}" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" >
+                                        <TextBlock Text="Место проведения:" HorizontalAlignment="Center"/>
+                                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Text="{Binding Sites.name_sites}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Предоставляемые услуги: " HorizontalAlignment="Center"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding InformEmploe}"/>
+                                    </StackPanel>
+                                </StackPanel>    
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" />
+                <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

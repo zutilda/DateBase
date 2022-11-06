@@ -104,6 +104,7 @@
     <Compile Include="PageUser.xaml.cs">
       <DependentUpon>PageUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PartialClassParty.cs" />
     <Compile Include="Party.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
