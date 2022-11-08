@@ -30,5 +30,10 @@ namespace DateBase
         {
             ClassFrame.newFrame.Navigate(new BlankPage());
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageCreateEmployement());
+        }
     }
 }

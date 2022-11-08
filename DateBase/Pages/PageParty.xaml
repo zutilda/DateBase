@@ -12,7 +12,7 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -62,7 +62,7 @@
         <StackPanel Grid.Row="1" Margin="10">
             <Grid>
                 <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" Click="btnBack_Click" />
-                <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" />
+                <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" Click="btnAdd_Click" />
             </Grid>
         </StackPanel>
     </Grid>

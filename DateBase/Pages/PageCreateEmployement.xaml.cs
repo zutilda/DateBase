@@ -16,26 +16,13 @@ using System.Windows.Shapes;
 namespace DateBase
 {
     /// <summary>
-    /// Логика взаимодействия для PageParty.xaml
+    /// Логика взаимодействия для PageCreateEmployement.xaml
     /// </summary>
-    public partial class PageParty : Page
+    public partial class PageCreateEmployement : Page
     {
-        public PageParty()
+        public PageCreateEmployement()
         {
             InitializeComponent();
-            ListParty.ItemsSource = DBase.ZE.Party.ToList();
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            ClassFrame.newFrame.Navigate(new BlankPage());
-        }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            ClassFrame.newFrame.Navigate(new PageCreateParty());
         }
     }
-
-   
 }

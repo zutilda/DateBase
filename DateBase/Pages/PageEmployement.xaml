@@ -9,11 +9,11 @@
       Title="PageEmployement">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="11*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="0" Height="300"  x:Name="ListImployement" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+        <ListView Grid.Row="0" Height="400"  x:Name="ListImployement" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -35,7 +35,7 @@
         <StackPanel Grid.Row="1" Margin="10">
             <Grid>
                 <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" Click="btnBack_Click" />
-                <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" />
+                <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" Click="btnAdd_Click" />
             </Grid>
         </StackPanel>
     </Grid>
