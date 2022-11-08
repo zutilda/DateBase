@@ -10,20 +10,20 @@
             <PropertyRef Name="id_client" />
           </Key>
           <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="surname" Type="nchar" MaxLength="25" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="25" Nullable="false" />
-          <Property Name="patronymic" Type="nchar" MaxLength="25" />
-          <Property Name="contacts" Type="nchar" MaxLength="16" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="25" />
+          <Property Name="contacts" Type="nvarchar" MaxLength="16" Nullable="false" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
             <PropertyRef Name="id_employe" />
           </Key>
           <Property Name="id_employe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="surname" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="patronymic" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="login" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="int" Nullable="false" />
           <Property Name="id_role" Type="int" Nullable="false" />
           <Property Name="contact" Type="nchar" MaxLength="11" Nullable="false" />
@@ -46,7 +46,7 @@
             <PropertyRef Name="id_gender" />
           </Key>
           <Property Name="id_gender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Party">
           <Key>
@@ -63,29 +63,29 @@
             <PropertyRef Name="id_positions" />
           </Key>
           <Property Name="id_positions" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_position" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="name_position" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="id_role" />
           </Key>
           <Property Name="id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_role" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="name_role" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="id_services" />
           </Key>
           <Property Name="id_services" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_services" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="name_services" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Sites">
           <Key>
             <PropertyRef Name="id_sites" />
           </Key>
           <Property Name="id_sites" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_sites" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="adress" Type="nchar" MaxLength="70" Nullable="false" />
+          <Property Name="name_sites" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="adress" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="rent" Type="float" Nullable="false" />
           <Property Name="image" Type="varchar(max)" Nullable="false" />
         </EntityType>
@@ -104,7 +104,7 @@
             <PropertyRef Name="id_type" />
           </Key>
           <Property Name="id_type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name_type" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="name_type" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Employe_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
@@ -143,7 +143,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employment_Party">
-          <End Role="Party" Type="Self.Party" Multiplicity="1" />
+          <End Role="Party" Type="Self.Party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Employment" Type="Self.Employment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Party">
@@ -179,7 +181,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Clients">
-          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Party" Type="Self.Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clients">
@@ -191,7 +195,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Sites">
-          <End Role="Sites" Type="Self.Sites" Multiplicity="1" />
+          <End Role="Sites" Type="Self.Sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Party" Type="Self.Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sites">
@@ -203,7 +209,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Type_party">
-          <End Role="Type_party" Type="Self.Type_party" Multiplicity="1" />
+          <End Role="Type_party" Type="Self.Type_party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Party" Type="Self.Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type_party">
@@ -321,10 +329,10 @@
             <PropertyRef Name="id_client" />
           </Key>
           <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="surname" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
-          <Property Name="patronymic" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
-          <Property Name="contacts" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="contacts" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Party" Relationship="Model.FK_Party_Clients" FromRole="Clients" ToRole="Party" />
         </EntityType>
         <EntityType Name="Employe">
@@ -332,10 +340,10 @@
             <PropertyRef Name="id_employe" />
           </Key>
           <Property Name="id_employe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="surname" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="patronymic" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="Int32" Nullable="false" />
           <Property Name="id_role" Type="Int32" Nullable="false" />
           <Property Name="contact" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
@@ -365,7 +373,7 @@
             <PropertyRef Name="id_gender" />
           </Key>
           <Property Name="id_gender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="gender1" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="gender1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employe" Relationship="Model.FK_Employe_Gender" FromRole="Gender" ToRole="Employe" />
         </EntityType>
         <EntityType Name="Party">
@@ -387,7 +395,7 @@
             <PropertyRef Name="id_positions" />
           </Key>
           <Property Name="id_positions" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_position" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name_position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employment" Relationship="Model.FK_Employment_Position" FromRole="Position" ToRole="Employment" />
         </EntityType>
         <EntityType Name="Role">
@@ -395,7 +403,7 @@
             <PropertyRef Name="id_role" />
           </Key>
           <Property Name="id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_role" Type="String" Nullable="false" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="name_role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employe" Relationship="Model.FK_Employe_Role" FromRole="Role" ToRole="Employe" />
         </EntityType>
         <EntityType Name="Services">
@@ -403,7 +411,7 @@
             <PropertyRef Name="id_services" />
           </Key>
           <Property Name="id_services" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_services" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name_services" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employment" Relationship="Model.FK_Employment_Services" FromRole="Services" ToRole="Employment" />
         </EntityType>
         <EntityType Name="Sites">
@@ -411,8 +419,8 @@
             <PropertyRef Name="id_sites" />
           </Key>
           <Property Name="id_sites" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_sites" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="adress" Type="String" Nullable="false" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="name_sites" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adress" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="rent" Type="Double" Nullable="false" />
           <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Party" Relationship="Model.FK_Party_Sites" FromRole="Sites" ToRole="Party" />
@@ -432,7 +440,7 @@
             <PropertyRef Name="id_type" />
           </Key>
           <Property Name="id_type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name_type" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="name_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Party" Relationship="Model.FK_Party_Type_party" FromRole="Type_party" ToRole="Party" />
         </EntityType>
         <Association Name="FK_Party_Clients">

@@ -13,7 +13,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="DarkSlateBlue" >
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="DarkSlateBlue">
             <Image Source="image\logotip.png" Margin="10" Height="145" Width="260"/>
             <StackPanel Background="DarkSlateBlue">
                 <TextBlock  Text="Студия организации праздников  'Party Time'" VerticalAlignment="Center" FontSize="24" Margin="50,40,60,0" Foreground="MistyRose"/>
