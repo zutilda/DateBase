@@ -34,8 +34,8 @@
 5 шаг. В главном окне программы Visual Studio нажать на кнопку "клонировтаь репозиторий" и в поле "Расположение репозитория" вставляем скопированный ранее URL из GitHub.
 ![Clone](https://sun9-west.userapi.com/sun9-54/s/v1/ig2/yGVNTABHZPILDVLN3UdN5f2OTWIYOz-7w6yFPHBfP1T2Tyta6ygMWh3SVRwx-phA0p6h6dLKzqQ5mgNr5B5m5I1f.jpg?size=1013x677&quality=96&type=album, "Клонирование репозитория") 
 Для завершения установки нажимаем кнопку "Клонировать".<br>
-6 шаг. Нажимаем на кнопку "Пуск"
-![Clone](https://sun9-east.userapi.com/sun9-31/s/v1/ig2/bc5BZqbPNbfbxh7BaQ1nIgmTTSfim5V_HW2OjnBi6etqicwHmITLuEv2k1uGoWLHkc02GRylGWVtUTifO2Okc-OJ.jpg?size=400x106&quality=96&type=album, "Запуск проекта").<br>
+6 шаг. Нажимаем на кнопку "Пуск".<br>
+![Clone](https://sun9-east.userapi.com/sun9-31/s/v1/ig2/bc5BZqbPNbfbxh7BaQ1nIgmTTSfim5V_HW2OjnBi6etqicwHmITLuEv2k1uGoWLHkc02GRylGWVtUTifO2Okc-OJ.jpg?size=400x106&quality=96&type=album, "Запуск проекта")
 7 шаг. Программа на данный момент __находится в разработке__. Поэтому чтобы проверить работоспособность программы необходимо зайти под учетной записью администратора в файле *PageLogIn.xaml.cs*, среди кода есть закомментированный участок с логином и паролем, их используем для входа  в систему.
 ```
 // Логин: admin
