@@ -1,7 +1,7 @@
 # DataBase
 Проект создан в рамках изучения WPF с подключением к проекту базы данных.
 ## Начало работы
-Для начала работы нужно перей по ссылке на [проект Git](https://github.com/zutilda/DateBase) и скопировать URL адрес. Затем перейти в программу Visual Studio и клонировать репозиторий.
+Для начала работы нужно перейти по ссылке на [проект Git](https://github.com/zutilda/DateBase) и скопировать URL адрес. Затем перейти в программу Visual Studio и клонировать репозиторий.
 
 ### Необходимые условия
 
@@ -30,13 +30,13 @@
 ![Installer modul](https://sun9-east.userapi.com/sun9-22/s/v1/ig2/LFHLlximmXXZzPxFW2ct7m_WHc_qmO6WRrKJ2tnRfXMdr1RW8saeMJibpxxETlmve__GSmGNdzpdRWnQ6zYB_nmQ.jpg?size=1232x622&quality=96&type=album, "Выбор компонентов")
 Нажимаем на кнопку "Установить" и ждем завершения установки. <br>
 По окончанию установки выбираем цвет темы программы и входим в аккаунт Microsoft.<br>
-4 шаг. Перейти по [ссылке](https://github.com/zutilda/DateBase) и скопировть URL-адрес. <br>
+4 шаг. Перейти по [ссылке](https://github.com/zutilda/DateBase) и скопировать URL-адрес. <br>
 5 шаг. В главном окне программы Visual Studio нажать на кнопку "клонировтаь репозиторий" и в поле "Расположение репозитория" вставляем скопированный ранее URL из GitHub.
 ![Clone](https://sun9-west.userapi.com/sun9-54/s/v1/ig2/yGVNTABHZPILDVLN3UdN5f2OTWIYOz-7w6yFPHBfP1T2Tyta6ygMWh3SVRwx-phA0p6h6dLKzqQ5mgNr5B5m5I1f.jpg?size=1013x677&quality=96&type=album, "Клонирование репозитория") 
 Для завершения установки нажимаем кнопку "Клонировать".<br>
 6 шаг. Нажимаем на кнопку "Пуск"
 ![Clone](https://sun9-east.userapi.com/sun9-31/s/v1/ig2/bc5BZqbPNbfbxh7BaQ1nIgmTTSfim5V_HW2OjnBi6etqicwHmITLuEv2k1uGoWLHkc02GRylGWVtUTifO2Okc-OJ.jpg?size=400x106&quality=96&type=album, "Запуск проекта").<br>
-7 шаг. Программа на данный момент __находится в разработке__. Поэтому чтобы проверить работоспособность программы необходимо зайти под учетной записью администратора в файле *PageLogIn.xaml.cs*, среди кода есть закоментированный участок с логином и паролем, их используем для входа  в систему.
+7 шаг. Программа на данный момент __находится в разработке__. Поэтому чтобы проверить работоспособность программы необходимо зайти под учетной записью администратора в файле *PageLogIn.xaml.cs*, среди кода есть закомментированный участок с логином и паролем, их используем для входа  в систему.
 ```
 // Логин: admin
 // Пароль: Admin_12
