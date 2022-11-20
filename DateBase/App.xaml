@@ -19,5 +19,10 @@
                 <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="MistyRose" FontSize="20"/>
             </Border>
         </ControlTemplate>
+        <ControlTemplate x:Key="btnAdd" TargetType="Button">
+            <Border CornerRadius="20" Background="DarkSlateBlue" Height="30" Width="200">
+                <ContentControl  Content="{TemplateBinding Content}" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Foreground="MistyRose" FontSize="14"/>
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>
