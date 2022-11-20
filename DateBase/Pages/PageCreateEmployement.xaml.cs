@@ -20,9 +20,36 @@ namespace DateBase
     /// </summary>
     public partial class PageCreateEmployement : Page
     {
+        public static Party party 
+        { 
+            get
+            {
+                return party;
+            }
+            set
+            {
+                party = value;
+            }
+        } 
         public PageCreateEmployement()
         {
             InitializeComponent();
+        }
+
+        private void btnParty_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageParty());
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageCreateParty());
+        } 
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+
         }
     }
 }

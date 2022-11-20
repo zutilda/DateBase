@@ -14,13 +14,33 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
+
         <StackPanel Grid.Row="0" Margin="10">
+            <StackPanel HorizontalAlignment="Left">
+                <StackPanel Height="60" Width="350" Orientation="Vertical">
+                    <TextBlock  Text="Выберите сотрудника" FontSize="18" Foreground="DarkSlateBlue"/>
+                    <ComboBox x:Name="cmbEmploye"/>
+                </StackPanel>
+                <StackPanel Height="60" Width="350" Orientation="Vertical">
+                    <TextBlock  Text="Выберите должность" FontSize="18" Foreground="DarkSlateBlue"/>
+                    <ComboBox x:Name="cmbPosition"/>
+                </StackPanel>
+                <StackPanel Height="60" Width="350" Orientation="Vertical">
+                    <TextBlock  Text="Выберите услугу" FontSize="18" Foreground="DarkSlateBlue"/>
+                    <ComboBox x:Name="cmbService"/>
+                </StackPanel>
+                <StackPanel Height="60" Width="350" Orientation="Vertical">
+                    <TextBlock  Text="Введите стоимость услуги" FontSize="18" Foreground="DarkSlateBlue"/>
+                    <TextBox Name="tbPrice" FontSize="18"/>
+                </StackPanel>
+            </StackPanel>
 
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="10">
             <Grid>
-                <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" />
-                <Button x:Name="btnSave"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Сохранить" />
+                <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="На главную" Click="btnBack_Click" />
+                <Button x:Name="btnSave"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Сохранить" Click="btnSave_Click" />
+                <Button x:Name="btnParty"  Template="{StaticResource btnPage}" HorizontalAlignment="Center" Content="К мероприятию" Click="btnParty_Click" />
             </Grid>
         </StackPanel>
     </Grid>

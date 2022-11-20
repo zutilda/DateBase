@@ -58,10 +58,10 @@ namespace DateBase
                     PT = new Party();
                 }
 
-                PT.id_type = cmbType.SelectedIndex + 1;
-                PT.id_sites = cmbLocation.SelectedIndex + 1;
+                PT.id_type = Convert.ToInt32(cmbType.SelectedValue.ToString());
+                PT.id_sites = Convert.ToInt32(cmbLocation.SelectedValue.ToString());
                 PT.date = Convert.ToDateTime(dpDate.SelectedDate);
-                PT.id_client = cmbClient.SelectedIndex + 1;                
+                PT.id_client = Convert.ToInt32(cmbClient.SelectedValue.ToString());
 
                 if (flagUpdate == false)
                 {
@@ -79,6 +79,19 @@ namespace DateBase
 
         private void btnService_Click(object sender, RoutedEventArgs e)
         {
+
+            if (PT != null)
+            {
+                DBase.ZE.Party.Add(PT);
+                DBase.ZE.SaveChanges();
+                PageCreateEmployement.party = PT;
+                ClassFrame.newFrame.Navigate(new PageCreateEmployement());
+
+            }
+            else
+            {
+                MessageBox.Show("Вы не добавили информацию о мероприятии!");
+            }
 
         }
     }
