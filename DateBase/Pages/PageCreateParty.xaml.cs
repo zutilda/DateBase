@@ -20,7 +20,9 @@ namespace DateBase
     /// </summary>
     public partial class PageCreateParty : Page
     {
-        Party PT;  
+        Party PT;
+        Sites ST;
+        Clients CL;
         bool flagUpdate = false; 
 
         public void uploadFields()  // метод для заполнения списков
@@ -69,7 +71,7 @@ namespace DateBase
                 }
                
                 DBase.ZE.SaveChanges();
-                MessageBox.Show("Информация о мероприятии добавлена добавлена");
+                MessageBox.Show("Информация о мероприятии добавлена ");
             }
             catch
             {
@@ -93,6 +95,73 @@ namespace DateBase
                 MessageBox.Show("Вы не добавили информацию о мероприятии!");
             }
 
+        }
+
+        private void btnSaveLoc_Click(object sender, RoutedEventArgs e)
+        {           
+            try
+            {
+                if (flagUpdate == false)
+                {
+                    ST = new Sites();
+                }
+
+                ST.name_sites = tbLoc.ToString();
+                ST.adress = tbAdres.ToString();
+                ST.rent = Convert.ToDouble(tbRent);                
+
+                if (flagUpdate == false)
+                {
+                    DBase.ZE.Sites.Add(ST);
+                }
+
+                DBase.ZE.SaveChanges();
+                MessageBox.Show("Информация о месте проведения добавлена ");
+            }
+            catch
+            {
+                MessageBox.Show("Запись не сохранена, попробуйте снова");
+            }
+            AddLocation.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnSaveClient_Click(object sender, RoutedEventArgs e)
+        {           
+            try
+            {
+                if (flagUpdate == false)
+                {
+                    CL = new Clients();
+                }
+                
+                CL.surname = tbSurname.ToString();
+                CL.name = tbName.ToString();
+                CL.patronymic = tbPart.ToString();
+                CL.id_client = Convert.ToInt32(tbContact.ToString());
+
+                if (flagUpdate == false)
+                {
+                    DBase.ZE.Clients.Add(CL);
+                }
+
+                DBase.ZE.SaveChanges();
+                MessageBox.Show("Информация о клиенте добавлена");
+            }
+            catch
+            {
+                MessageBox.Show("Запись не сохранена, попробуйте снова");
+            }
+            AddClient.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnAddClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient.Visibility = Visibility.Visible;
+        }
+
+        private void btnAddLoc_Click(object sender, RoutedEventArgs e)
+        {
+            AddLocation.Visibility = Visibility.Visible;
         }
     }
 }
