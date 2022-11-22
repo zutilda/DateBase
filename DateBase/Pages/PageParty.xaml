@@ -51,7 +51,9 @@
                                         <TextBlock Text="Предоставляемые услуги: " HorizontalAlignment="Center"/>
                                         <TextBlock TextWrapping="Wrap" Text="{Binding InformEmploe}"/>
                                     </StackPanel>
-                                </StackPanel>    
+                                        <Button x:Name="btnDelite" Uid="{Binding id_party}" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Удалить" Click="btnDelite_Click" />
+                                        <Button x:Name="btnEdit" Uid="{Binding id_party}" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Изменить" Click="btnEdit_Click" />
+                                    </StackPanel>    
                             </StackPanel>
                             </ScrollViewer>
                         </Grid>

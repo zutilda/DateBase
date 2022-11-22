@@ -20,10 +20,10 @@ namespace DateBase
     /// </summary>
     public partial class PageCreateParty : Page
     {
-        Party PT;
-        Sites ST;
-        Clients CL;
-        bool flagUpdate = false; 
+        public static Party PT;
+         Sites ST;
+         Clients CL;
+        public static bool flagUpdate = false; 
 
         public void uploadFields()  // метод для заполнения списков
         {
@@ -81,11 +81,10 @@ namespace DateBase
 
         private void btnService_Click(object sender, RoutedEventArgs e)
         {
-
+            btnSave_Click(sender, e);
             if (PT != null)
             {
-                DBase.ZE.Party.Add(PT);
-                DBase.ZE.SaveChanges();
+               
                 PageCreateEmployement.party = PT;
                 ClassFrame.newFrame.Navigate(new PageCreateEmployement());
 

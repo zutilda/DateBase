@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace DateBase
 {
@@ -20,22 +23,29 @@ namespace DateBase
     /// </summary>
     public partial class PageCreateEmployement : Page
     {
-        public static Party party 
-        { 
-            get
-            {
-                return party;
-            }
-            set
-            {
-                party = value;
-            }
-        } 
+        public static Party party;
+        Employment EM;
+        bool flagUpdate = false;
+        public void uploadFields()
+        {
+            InitializeComponent();
+            cmbEmploye.ItemsSource = DBase.ZE.Employe.ToList();
+            cmbEmploye.SelectedValuePath = "id_employe";
+            cmbEmploye.DisplayMemberPath = "surname" + "name";
+
+            cmbPosition.ItemsSource = DBase.ZE.Position.ToList();
+            cmbPosition.SelectedValuePath = "id_positions";
+            cmbPosition.DisplayMemberPath = "name_sites";
+
+            cmbService.ItemsSource = DBase.ZE.Services.ToList();
+            cmbService.SelectedValuePath = "id_services";
+            cmbService.DisplayMemberPath = "name_services";
+        }
         public PageCreateEmployement()
         {
             InitializeComponent();
+            uploadFields();
         }
-
         private void btnParty_Click(object sender, RoutedEventArgs e)
         {
             ClassFrame.newFrame.Navigate(new PageParty());
@@ -47,8 +57,31 @@ namespace DateBase
         } 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                if (flagUpdate == false)
+                {
+                    EM = new Employment();
+                }
 
+                EM.id_employe = Convert.ToInt32(cmbEmploye.SelectedValue.ToString());
+                EM.id_position = Convert.ToInt32(cmbPosition.SelectedValue.ToString());
+                EM.id_party = party.id_party;
+                EM.id_service = Convert.ToInt32(cmbService.SelectedValue.ToString());
+                EM.price = Convert.ToDouble(tbPrice.Text.ToString());
+
+                if (flagUpdate == false)
+                {
+                    DBase.ZE.Employment.Add(EM);
+                }
+
+                DBase.ZE.SaveChanges();
+                MessageBox.Show("Информация о занятости сотрудника добавлена ");
+            }
+            catch
+            {
+                MessageBox.Show("Запись не сохранена, попробуйте снова");
+            }
 
         }
     }
