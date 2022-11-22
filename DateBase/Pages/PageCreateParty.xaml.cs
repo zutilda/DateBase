@@ -106,9 +106,9 @@ namespace DateBase
                     ST = new Sites();
                 }
 
-                ST.name_sites = tbLoc.ToString();
-                ST.adress = tbAdres.ToString();
-                ST.rent = Convert.ToDouble(tbRent);                
+                ST.name_sites = tbLoc.Text.ToString();
+                ST.adress = tbAdres.Text.ToString();
+                ST.rent = Convert.ToDouble(tbRent.Text.ToString());                
 
                 if (flagUpdate == false)
                 {
@@ -134,10 +134,10 @@ namespace DateBase
                     CL = new Clients();
                 }
                 
-                CL.surname = tbSurname.ToString();
-                CL.name = tbName.ToString();
-                CL.patronymic = tbPart.ToString();
-                CL.id_client = Convert.ToInt32(tbContact.ToString());
+                CL.surname = tbSurname.Text.ToString();
+                CL.name = tbName.Text.ToString();
+                CL.patronymic = tbPart.Text.ToString();
+                CL.contacts = tbContact.Text.ToString();
 
                 if (flagUpdate == false)
                 {

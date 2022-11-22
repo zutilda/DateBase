@@ -39,7 +39,7 @@
             </StackPanel>
             <StackPanel Margin="10,0,0,0">
                 <StackPanel  Name="AddLocation" Visibility="Collapsed">
-                    <StackPanel Height="60" Width="350" Orientation="Vertical">
+                    <StackPanel Height="80" Width="350" Orientation="Vertical">
                         <TextBlock  Text="Введите название" FontSize="18" Foreground="DarkSlateBlue"/>
                         <TextBox Name="tbLoc" FontSize="18"/>
                     </StackPanel>
@@ -56,7 +56,7 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel  Name="AddClient"  Visibility="Collapsed" >
-                    <StackPanel Height="60" Width="350" Orientation="Vertical">
+                    <StackPanel Height="80" Width="350" Orientation="Vertical">
                         <TextBlock  Text="Введите фамилию" FontSize="18" Foreground="DarkSlateBlue"/>
                         <TextBox Name="tbSurname" FontSize="18"/>
                     </StackPanel>
