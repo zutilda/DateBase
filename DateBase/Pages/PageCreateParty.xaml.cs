@@ -117,6 +117,7 @@ namespace DateBase
 
                 DBase.ZE.SaveChanges();
                 MessageBox.Show("Информация о месте проведения добавлена ");
+                ClassFrame.newFrame.Navigate(new PageCreateParty());
             }
             catch
             {
@@ -146,6 +147,7 @@ namespace DateBase
 
                 DBase.ZE.SaveChanges();
                 MessageBox.Show("Информация о клиенте добавлена");
+                ClassFrame.newFrame.Navigate(new PageCreateParty());
             }
             catch
             {
