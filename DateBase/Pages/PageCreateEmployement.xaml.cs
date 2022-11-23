@@ -46,6 +46,16 @@ namespace DateBase
             InitializeComponent();
             uploadFields();
         }
+        public PageCreateEmployement(Employment employment)
+        {
+            InitializeComponent();
+            uploadFields();
+            EM = employment;
+            flagUpdate = true;
+            cmbEmploye.SelectedValue = employment.id_employe;
+            cmbPosition.SelectedValue = employment.id_position;
+            cmbService.SelectedValue = employment.id_service;
+        }
         private void btnParty_Click(object sender, RoutedEventArgs e)
         {
             ClassFrame.newFrame.Navigate(new PageParty());

@@ -20,13 +20,15 @@ namespace DateBase
     /// </summary>
     public partial class PageCreateParty : Page
     {
-        public static Party PT;
+        private static Party PT;
          Sites ST;
          Clients CL;
-        public static bool flagUpdate = false; 
+         public static bool flagUpdate = false; 
 
         public void uploadFields()  // метод для заполнения списков
         {
+            if(flagUpdate==false)
+            {
             cmbType.ItemsSource = DBase.ZE.Type_party.ToList();
             cmbType.SelectedValuePath = "id_type";
             cmbType.DisplayMemberPath = "name_type";
@@ -38,6 +40,32 @@ namespace DateBase
             cmbClient.ItemsSource = DBase.ZE.Clients.ToList();
             cmbClient.SelectedValuePath = "id_client";
             cmbClient.DisplayMemberPath = "surname";
+            }
+           
+        }
+
+        public PageCreateParty(Party party)
+        {
+            InitializeComponent();
+            uploadFields(); 
+            flagUpdate = true; 
+            PT = party;
+            cmbType.ItemsSource = DBase.ZE.Type_party.ToList();
+            cmbType.SelectedValuePath = "id_type";
+            cmbType.DisplayMemberPath = "name_type";
+
+            cmbLocation.ItemsSource = DBase.ZE.Sites.ToList();
+            cmbLocation.SelectedValuePath = "id_sites";
+            cmbLocation.DisplayMemberPath = "name_sites";
+
+            cmbClient.ItemsSource = DBase.ZE.Clients.ToList();
+            cmbClient.SelectedValuePath = "id_client";
+            cmbClient.DisplayMemberPath = "surname";
+
+            cmbType.SelectedValue = party.id_type; 
+            cmbLocation.SelectedValue = party.id_sites;  
+            dpDate.SelectedDate = party.date;  
+            cmbClient.SelectedValue = party.id_client;  
         }
         public PageCreateParty()
         {

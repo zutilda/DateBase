@@ -63,9 +63,7 @@ namespace DateBase
         {
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Uid);
-            PageCreateParty.PT = DBase.ZE.Party.FirstOrDefault(x => x.id_party == id);
-            PageCreateParty.flagUpdate = true;
-            ClassFrame.newFrame.Navigate(new PageCreateParty());
+            ClassFrame.newFrame.Navigate(new PageCreateParty(DBase.ZE.Party.FirstOrDefault(x => x.id_party == id)));
         }
     }
 
