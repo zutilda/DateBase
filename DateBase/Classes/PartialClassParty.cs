@@ -30,6 +30,8 @@ namespace DateBase
             }
         }
 
+        
+
         public SolidColorBrush ColorData
         {
             get

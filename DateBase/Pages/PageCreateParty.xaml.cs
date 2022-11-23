@@ -65,7 +65,9 @@ namespace DateBase
             cmbType.SelectedValue = party.id_type; 
             cmbLocation.SelectedValue = party.id_sites;  
             dpDate.SelectedDate = party.date;  
-            cmbClient.SelectedValue = party.id_client;  
+            cmbClient.SelectedValue = party.id_client;
+            ListImployement.Visibility = Visibility.Visible;
+            ListImployement.ItemsSource = DBase.ZE.Employment.Where(x=>x.id_party == PT.id_party).ToList();
         }
         public PageCreateParty()
         {
@@ -113,8 +115,8 @@ namespace DateBase
             if (PT != null)
             {
                
-                PageCreateEmployement.party = PT;
-                ClassFrame.newFrame.Navigate(new PageCreateEmployement());
+
+                ClassFrame.newFrame.Navigate(new PageCreateEmployement( PT));
 
             }
             else
@@ -151,6 +153,8 @@ namespace DateBase
                 MessageBox.Show("Запись не сохранена, попробуйте снова");
             }
             AddLocation.Visibility = Visibility.Collapsed;
+            Add.Visibility = Visibility.Collapsed;
+            ListImployement.Visibility = Visibility.Visible;
         }
 
         private void btnSaveClient_Click(object sender, RoutedEventArgs e)
@@ -181,16 +185,47 @@ namespace DateBase
                 MessageBox.Show("Запись не сохранена, попробуйте снова");
             }
             AddClient.Visibility = Visibility.Collapsed;
+            Add.Visibility = Visibility.Collapsed;
+            ListImployement.Visibility = Visibility.Visible;
         }
 
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
         {
+            Add.Visibility = Visibility.Visible;
             AddClient.Visibility = Visibility.Visible;
+            AddLocation.Visibility = Visibility.Collapsed;
+            ListImployement.Visibility = Visibility.Collapsed;
         }
 
         private void btnAddLoc_Click(object sender, RoutedEventArgs e)
         {
+            Add.Visibility = Visibility.Visible;
             AddLocation.Visibility = Visibility.Visible;
+            AddClient.Visibility = Visibility.Collapsed;
+            ListImployement.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnDelite_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Uid);
+
+            
+            Employment employment = DBase.ZE.Employment.FirstOrDefault(x => x.id_employment == id);
+
+                DBase.ZE.Employment.Remove(employment);
+
+            DBase.ZE.SaveChanges();
+            MessageBox.Show("Информация удалена");
+
+            ListImployement.ItemsSource = DBase.ZE.Employment.Where(x => x.id_party == PT.id_party).ToList();
+        }
+
+        private void btnEdited_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            int id = Convert.ToInt32(button.Uid);
+            ClassFrame.newFrame.Navigate(new PageCreateEmployement(DBase.ZE.Employment.FirstOrDefault(x => x.id_employment == id), PT));
         }
     }
 }

@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\PartialClassEmployment.cs" />
     <Compile Include="Pages\PageCreateEmployement.xaml.cs">
       <DependentUpon>PageCreateEmployement.xaml</DependentUpon>
     </Compile>

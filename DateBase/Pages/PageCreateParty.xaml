@@ -14,70 +14,102 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="10" Orientation="Horizontal">
-            <StackPanel>
-                <StackPanel HorizontalAlignment="Left">
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Выберите вид мероприятия" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <ComboBox x:Name="cmbType"/>                       
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0"  Margin="10" Orientation="Horizontal">
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Left">
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Выберите вид мероприятия" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <ComboBox x:Name="cmbType"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Выберите место проведения" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <ComboBox x:Name="cmbLocation"/>
+                            <Button x:Name="btnAddLoc" Template="{StaticResource btnAdd}" Content="Добавить" Margin="5" Click="btnAddLoc_Click"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Выберите клиента" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <ComboBox x:Name="cmbClient"/>
+                            <Button x:Name="btnAddClient" Template="{StaticResource btnAdd}" Content="Добавить" Margin="5" Click="btnAddClient_Click"/>
+                        </StackPanel>
+                        <StackPanel Height="60" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Выберите дату проведения" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <DatePicker Name="dpDate" FontSize="18"></DatePicker>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Выберите место проведения" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <ComboBox x:Name="cmbLocation"/>
-                        <Button x:Name="btnAddLoc" Template="{StaticResource btnAdd}" Content="Добавить" Margin="5" Click="btnAddLoc_Click"/>
+                </StackPanel>               
+                <StackPanel Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" Name="Add" Visibility="Collapsed">
+                    <StackPanel  Name="AddLocation" Visibility="Collapsed">
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Введите название" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <TextBox Name="tbLoc" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Введите адрес" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <TextBox Name="tbAdres" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Введите стоимость аренды" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <TextBox Name="tbRent" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <Button x:Name="btnSaveLoc" Template="{StaticResource btnAdd}" HorizontalAlignment="Center"  Content="Добавить место" Click="btnSaveLoc_Click"/>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Выберите клиента" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <ComboBox x:Name="cmbClient"/>
-                        <Button x:Name="btnAddClient" Template="{StaticResource btnAdd}" Content="Добавить" Margin="5" Click="btnAddClient_Click"/>
-                    </StackPanel>
-                    <StackPanel Height="60" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Выберите дату проведения" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <DatePicker Name="dpDate" FontSize="18"></DatePicker>
+                    <StackPanel  Name="AddClient"  Visibility="Collapsed" >
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Введите фамилию" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <TextBox Name="tbSurname" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Введите имя" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <TextBox Name="tbName" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Введите отчество" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <TextBox Name="tbPart" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <TextBlock  Text="Введите контактный телефон" FontSize="18" Foreground="DarkSlateBlue"/>
+                            <TextBox Name="tbContact" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel Height="80" Width="350" Orientation="Vertical">
+                            <Button x:Name="btnSaveClient" Template="{StaticResource btnAdd}" HorizontalAlignment="Center"  Content="Добавить место" Click="btnSaveClient_Click"/>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Margin="10,0,0,0">
-                <StackPanel  Name="AddLocation" Visibility="Collapsed">
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Введите название" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <TextBox Name="tbLoc" FontSize="18"/>
-                    </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Введите адрес" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <TextBox Name="tbAdres" FontSize="18"/>
-                    </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Введите стоимость аренды" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <TextBox Name="tbRent" FontSize="18"/>
-                    </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <Button x:Name="btnSaveLoc" Template="{StaticResource btnAdd}" HorizontalAlignment="Center"  Content="Добавить место" Click="btnSaveLoc_Click"/>
-                    </StackPanel>
-                </StackPanel>
-                <StackPanel  Name="AddClient"  Visibility="Collapsed" >
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Введите фамилию" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <TextBox Name="tbSurname" FontSize="18"/>
-                    </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Введите имя" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <TextBox Name="tbName" FontSize="18"/>
-                    </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Введите отчество" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <TextBox Name="tbPart" FontSize="18"/>
-                    </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <TextBlock  Text="Введите контактный телефон" FontSize="18" Foreground="DarkSlateBlue"/>
-                        <TextBox Name="tbContact" FontSize="18"/>
-                    </StackPanel>
-                    <StackPanel Height="80" Width="350" Orientation="Vertical">
-                        <Button x:Name="btnSaveClient" Template="{StaticResource btnAdd}" HorizontalAlignment="Center"  Content="Добавить место" Click="btnSaveClient_Click"/>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+            <ListView Grid.Column="1" Grid.Row="0" Height="300"  x:Name="ListImployement" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Margin="10">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" CornerRadius="20" Height="200" BorderThickness="1" BorderBrush="DeepPink" Background="MistyRose">
+                            <Grid Width="365" Height="350">
+                                <StackPanel>
+                                    <StackPanel>
+                                        <TextBlock Text="Занятость сотрудника:" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
+                                        <TextBlock TextWrapping="Wrap" Text="{Binding InformOneEmploe}"/>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <Button x:Name="btnDelite" Uid="{Binding id_employment}" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Удалить" Click="btnDelite_Click" />
+                                        <Button x:Name="btnEdit" Uid="{Binding id_employment}" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Изменить" Click="btnEdited_Click" />
+                                     </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
         <StackPanel Grid.Row="1" Margin="10">
             <Grid>
                 <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" Click="btnBack_Click" />

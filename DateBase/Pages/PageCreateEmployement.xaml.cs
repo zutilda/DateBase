@@ -23,7 +23,7 @@ namespace DateBase
     /// </summary>
     public partial class PageCreateEmployement : Page
     {
-        public static Party party;
+        Party party;
         Employment EM;
         bool flagUpdate = false;
         public void uploadFields()
@@ -31,25 +31,33 @@ namespace DateBase
             InitializeComponent();
             cmbEmploye.ItemsSource = DBase.ZE.Employe.ToList();
             cmbEmploye.SelectedValuePath = "id_employe";
-            cmbEmploye.DisplayMemberPath = "surname" + "name";
+            cmbEmploye.DisplayMemberPath = "surname";
 
             cmbPosition.ItemsSource = DBase.ZE.Position.ToList();
             cmbPosition.SelectedValuePath = "id_positions";
-            cmbPosition.DisplayMemberPath = "name_sites";
+            cmbPosition.DisplayMemberPath = "name_position";
 
             cmbService.ItemsSource = DBase.ZE.Services.ToList();
             cmbService.SelectedValuePath = "id_services";
             cmbService.DisplayMemberPath = "name_services";
         }
-        public PageCreateEmployement()
+        public PageCreateEmployement(Party party)
         {
+            this.party = party;
             InitializeComponent();
             uploadFields();
         }
-        public PageCreateEmployement(Employment employment)
+        public PageCreateEmployement()
+        {
+            this.party = party;
+            InitializeComponent();
+            uploadFields();
+        }
+        public PageCreateEmployement(Employment employment, Party party)
         {
             InitializeComponent();
             uploadFields();
+            this.party = party;
             EM = employment;
             flagUpdate = true;
             cmbEmploye.SelectedValue = employment.id_employe;
