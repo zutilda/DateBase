@@ -47,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -67,7 +68,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Images.cs" />
     <Compile Include="Classes\PartialClassEmployment.cs" />
+    <Compile Include="Pages\EditAccount.xaml.cs">
+      <DependentUpon>EditAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditAccountInform.xaml.cs">
+      <DependentUpon>EditAccountInform.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageCreateEmployement.xaml.cs">
       <DependentUpon>PageCreateEmployement.xaml</DependentUpon>
     </Compile>
@@ -111,11 +119,11 @@
     <Compile Include="Pages\PageParty.xaml.cs">
       <DependentUpon>PageParty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PageUser.xaml.cs">
-      <DependentUpon>PageUser.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Classes\PartialClassParty.cs" />
     <Compile Include="Party.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Photos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Position.cs">
@@ -136,6 +144,14 @@
     <Compile Include="Type_party.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\EditAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditAccountInform.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageCreateEmployement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,10 +193,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageParty.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PageUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

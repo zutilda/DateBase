@@ -18,15 +18,17 @@ namespace DateBase
         public Sites()
         {
             this.Party = new HashSet<Party>();
+            this.Photos = new HashSet<Photos>();
         }
     
         public int id_sites { get; set; }
         public string name_sites { get; set; }
         public string adress { get; set; }
         public double rent { get; set; }
-        public string image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Party> Party { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Photos> Photos { get; set; }
     }
 }

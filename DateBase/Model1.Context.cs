@@ -30,6 +30,7 @@ namespace DateBase
         public virtual DbSet<Employment> Employment { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Party> Party { get; set; }
+        public virtual DbSet<Photos> Photos { get; set; }
         public virtual DbSet<Position> Position { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Services> Services { get; set; }

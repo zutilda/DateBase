@@ -4,27 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2facc0cfeb6e4576a6ba24ac386d2ce9" Name="Diagram1" ZoomLevel="77">
-        <EntityTypeShape EntityType="Model.Clients" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="Model.Employe" Width="1.5" PointX="3" PointY="11.75" />
-        <EntityTypeShape EntityType="Model.Employment" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="0.75" PointY="11.5" />
-        <EntityTypeShape EntityType="Model.Party" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="Model.Position" Width="1.5" PointX="3" PointY="7.125" />
-        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="0.75" PointY="13.875" />
-        <EntityTypeShape EntityType="Model.Services" Width="1.5" PointX="3" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.Sites" Width="1.5" PointX="0.75" PointY="5.375" />
-        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.Type_party" Width="1.5" PointX="0.75" PointY="8.25" />
+      <Diagram DiagramId="2facc0cfeb6e4576a6ba24ac386d2ce9" Name="Diagram1" ZoomLevel="31">
+        <EntityTypeShape EntityType="Model.Clients" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Employe" Width="1.5" PointX="6" PointY="12.125" />
+        <EntityTypeShape EntityType="Model.Employment" Width="1.5" PointX="8.25" PointY="3.5" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="3.75" PointY="12" />
+        <EntityTypeShape EntityType="Model.Party" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="Model.Photos" Width="1.5" PointX="6" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.Position" Width="1.5" PointX="6" PointY="9.75" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="3.75" PointY="14.375" />
+        <EntityTypeShape EntityType="Model.Services" Width="1.5" PointX="6" PointY="7.375" />
+        <EntityTypeShape EntityType="Model.Sites" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.625" />
+        <EntityTypeShape EntityType="Model.Type_party" Width="1.5" PointX="0.75" PointY="7.625" />
         <AssociationConnector Association="Model.FK_Party_Clients" />
         <AssociationConnector Association="Model.FK_Employe_Gender" />
         <AssociationConnector Association="Model.FK_Employe_Role" />
         <AssociationConnector Association="Model.FK_Employment_Employe" />
+        <AssociationConnector Association="Model.FK_Photos_Employe" />
         <AssociationConnector Association="Model.FK_Employment_Party" />
         <AssociationConnector Association="Model.FK_Employment_Position" />
         <AssociationConnector Association="Model.FK_Employment_Services" />
         <AssociationConnector Association="Model.FK_Party_Sites" />
         <AssociationConnector Association="Model.FK_Party_Type_party" />
+        <AssociationConnector Association="Model.FK_Photos_Sites" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

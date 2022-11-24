@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 // Логин: admin
@@ -33,14 +22,14 @@ namespace DateBase
         private void btnLog_Click(object sender, RoutedEventArgs e)
         {
             int gender = 0;
-           
-            if (logMen.IsChecked == true)           
-            {           
-                gender = 1;           
-            }           
-            if (logWomen.IsChecked == true)           
-            {           
-                gender = 2;           
+
+            if (logMen.IsChecked == true)
+            {
+                gender = 1;
+            }
+            if (logWomen.IsChecked == true)
+            {
+                gender = 2;
             }
             if (logSurname.Text == "")
             {
@@ -57,7 +46,7 @@ namespace DateBase
                                     if (logMen.IsChecked == false && logWomen.IsChecked == false)
                                     {
                                         MessageBox.Show("Не выбран пол!");
-                                    }                                    
+                                    }
                                     MessageBox.Show("Поле Пароль не заполнено!");
                                 }
                                 MessageBox.Show("Поле Логин не заполнено!");
@@ -71,35 +60,36 @@ namespace DateBase
                 MessageBox.Show("Поле Фамилия не заполнено!");
             }
             else
+            {
+                Regex r1 = new Regex("(?=.*[A-Z])");
+                Regex r2 = new Regex("[a-z].*[a-z].*[a-z]");
+                Regex r3 = new Regex("\\d.*\\d");
+                Regex r4 = new Regex("[!@#$%^&*()_+=]");
+                Regex r5 = new Regex("(.+){8,}");
+                Regex r6 = new Regex("^[8]{1}[0-9]{10}$");
+
+                if (r1.IsMatch(logPassword.Password) == true)
                 {
-                   Regex r1 = new Regex("(?=.*[A-Z])");
-                   Regex r2 = new Regex("[a-z].*[a-z].*[a-z]");
-                   Regex r3 = new Regex("\\d.*\\d");
-                   Regex r4 = new Regex("[!@#$%^&*()_+=]");
-                   Regex r5 = new Regex("(.+){8,}");
-                   Regex r6 = new Regex("^[8]{1}[0-9]{10}$");
-               
-                   if (r1.IsMatch(logPassword.Password) == true)
-                   {
-                       if (r2.IsMatch(logPassword.Password) == true)
-                       {
-                           if (r3.IsMatch(logPassword.Password) == true)
-                           {
-                               if (r4.IsMatch(logPassword.Password) == true)
-                               {
-                                   if (r5.IsMatch(logPassword.Password) == true)
-                                   {
-                                    if(r6.IsMatch(logContact.Text) == true)
+                    if (r2.IsMatch(logPassword.Password) == true)
+                    {
+                        if (r3.IsMatch(logPassword.Password) == true)
+                        {
+                            if (r4.IsMatch(logPassword.Password) == true)
+                            {
+                                if (r5.IsMatch(logPassword.Password) == true)
+                                {
+                                    if (r6.IsMatch(logContact.Text) == true)
                                     {
                                         int passw = logPassword.Password.GetHashCode();
                                         Employe employe = DBase.ZE.Employe.FirstOrDefault(x => x.login == logLogin.Text);
                                         if (employe == null)
                                         {
-                                            Employe employes = new Employe() { surname = logSurname.Text, name = logName.Text, patronymic = logPatr.Text, login = logLogin.Text, password = logPassword.Password.GetHashCode(), id_role = 2, contact = logContact.Text, birthday = (DateTime)logBirthday.SelectedDate, id_gender = gender};
+                                            Employe employes = new Employe() { surname = logSurname.Text, name = logName.Text, patronymic = logPatr.Text, login = logLogin.Text, password = logPassword.Password.GetHashCode(), id_role = 2, contact = logContact.Text, birthday = (DateTime)logBirthday.SelectedDate, id_gender = gender };
                                             DBase.ZE.Employe.Add(employes);
-                                            DBase.ZE.SaveChanges(); 
+                                            DBase.ZE.SaveChanges();
                                             MessageBox.Show("Пользователь успешно зарегистрирован!");
-                                            ClassFrame.newFrame.Navigate(new PageUser());
+                                            BlankPage.EMP = employe;
+                                            ClassFrame.newFrame.Navigate(new BlankPage());
                                         }
                                         else
                                         {

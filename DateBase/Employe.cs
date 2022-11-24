@@ -18,6 +18,7 @@ namespace DateBase
         public Employe()
         {
             this.Employment = new HashSet<Employment>();
+            this.Photos = new HashSet<Photos>();
         }
     
         public int id_employe { get; set; }
@@ -35,5 +36,7 @@ namespace DateBase
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employment> Employment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Photos> Photos { get; set; }
     }
 }

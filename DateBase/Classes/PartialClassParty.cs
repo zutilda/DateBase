@@ -10,7 +10,7 @@ namespace DateBase
         {
             get
             {
-                return Clients.name+" " + Clients.surname+" " + Clients.patronymic + "\nКонтакты: "+ Clients.contacts;
+                return Clients.name + " " + Clients.surname + " " + Clients.patronymic + "\nКонтакты: " + Clients.contacts;
             }
         }
 
@@ -19,18 +19,18 @@ namespace DateBase
             get
             {
                 string str = "";
-                double stoim=0;
+                double stoim = 0;
                 foreach (var item in Employment.Where(x => x.id_party.Equals(id_party)))
                 {
-                    str += "Сотрудник " + item.Employe.name +" "+ item.Employe.surname +" "+ item.Employe.patronymic+" " + item.Position.name_position + " " + item.Services.name_services+ "\nСтоимость " +item.price + "\n";
+                    str += "Сотрудник " + item.Employe.name + " " + item.Employe.surname + " " + item.Employe.patronymic + " " + item.Position.name_position + " " + item.Services.name_services + "\nСтоимость " + item.price + "\n";
                     stoim += item.price;
                 }
-                str+= "Общая стоимость = "+ stoim;
+                str += "Общая стоимость = " + stoim;
                 return str;
             }
         }
 
-        
+
 
         public SolidColorBrush ColorData
         {

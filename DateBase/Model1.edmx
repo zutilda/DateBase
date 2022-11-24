@@ -58,6 +58,16 @@
           <Property Name="date" Type="date" Nullable="false" />
           <Property Name="id_client" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="int" Nullable="false" />
+          <Property Name="path_photo" Type="varchar(max)" />
+          <Property Name="binary_photo" Type="varbinary(max)" />
+          <Property Name="id_sites" Type="int" />
+          <Property Name="id_employee" Type="int" />
+        </EntityType>
         <EntityType Name="Position">
           <Key>
             <PropertyRef Name="id_positions" />
@@ -87,7 +97,6 @@
           <Property Name="name_sites" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="adress" Type="nvarchar" MaxLength="70" Nullable="false" />
           <Property Name="rent" Type="float" Nullable="false" />
-          <Property Name="image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -222,12 +231,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Photos_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="0..1" />
+          <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="id_employe" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photos_Sites">
+          <End Role="Sites" Type="Self.Sites" Multiplicity="0..1" />
+          <End Role="Photos" Type="Self.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="id_sites" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="id_sites" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employment" EntityType="Self.Employment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photos" EntityType="Self.Photos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
@@ -270,6 +304,14 @@
             <End Role="Type_party" EntitySet="Type_party" />
             <End Role="Party" EntitySet="Party" />
           </AssociationSet>
+          <AssociationSet Name="FK_Photos_Employe" Association="Self.FK_Photos_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photos_Sites" Association="Self.FK_Photos_Sites">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -281,6 +323,7 @@
           <EntitySet Name="Employment" EntityType="Model.Employment" />
           <EntitySet Name="Gender" EntityType="Model.Gender" />
           <EntitySet Name="Party" EntityType="Model.Party" />
+          <EntitySet Name="Photos" EntityType="Model.Photos" />
           <EntitySet Name="Position" EntityType="Model.Position" />
           <EntitySet Name="Role" EntityType="Model.Role" />
           <EntitySet Name="Services" EntityType="Model.Services" />
@@ -303,6 +346,10 @@
             <End Role="Employe" EntitySet="Employe" />
             <End Role="Employment" EntitySet="Employment" />
           </AssociationSet>
+          <AssociationSet Name="FK_Photos_Employe" Association="Model.FK_Photos_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employment_Party" Association="Model.FK_Employment_Party">
             <End Role="Party" EntitySet="Party" />
             <End Role="Employment" EntitySet="Employment" />
@@ -322,6 +369,10 @@
           <AssociationSet Name="FK_Party_Type_party" Association="Model.FK_Party_Type_party">
             <End Role="Type_party" EntitySet="Type_party" />
             <End Role="Party" EntitySet="Party" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Photos_Sites" Association="Model.FK_Photos_Sites">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="Photos" EntitySet="Photos" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Clients">
@@ -352,6 +403,7 @@
           <NavigationProperty Name="Gender" Relationship="Model.FK_Employe_Gender" FromRole="Employe" ToRole="Gender" />
           <NavigationProperty Name="Role" Relationship="Model.FK_Employe_Role" FromRole="Employe" ToRole="Role" />
           <NavigationProperty Name="Employment" Relationship="Model.FK_Employment_Employe" FromRole="Employe" ToRole="Employment" />
+          <NavigationProperty Name="Photos" Relationship="Model.FK_Photos_Employe" FromRole="Employe" ToRole="Photos" />
         </EntityType>
         <EntityType Name="Employment">
           <Key>
@@ -390,6 +442,18 @@
           <NavigationProperty Name="Sites" Relationship="Model.FK_Party_Sites" FromRole="Party" ToRole="Sites" />
           <NavigationProperty Name="Type_party" Relationship="Model.FK_Party_Type_party" FromRole="Party" ToRole="Type_party" />
         </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="id_photo" />
+          </Key>
+          <Property Name="id_photo" Type="Int32" Nullable="false" />
+          <Property Name="path_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="binary_photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="id_sites" Type="Int32" />
+          <Property Name="id_employee" Type="Int32" />
+          <NavigationProperty Name="Employe" Relationship="Model.FK_Photos_Employe" FromRole="Photos" ToRole="Employe" />
+          <NavigationProperty Name="Sites" Relationship="Model.FK_Photos_Sites" FromRole="Photos" ToRole="Sites" />
+        </EntityType>
         <EntityType Name="Position">
           <Key>
             <PropertyRef Name="id_positions" />
@@ -422,8 +486,8 @@
           <Property Name="name_sites" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="adress" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
           <Property Name="rent" Type="Double" Nullable="false" />
-          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Party" Relationship="Model.FK_Party_Sites" FromRole="Sites" ToRole="Party" />
+          <NavigationProperty Name="Photos" Relationship="Model.FK_Photos_Sites" FromRole="Sites" ToRole="Photos" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -444,7 +508,9 @@
           <NavigationProperty Name="Party" Relationship="Model.FK_Party_Type_party" FromRole="Type_party" ToRole="Party" />
         </EntityType>
         <Association Name="FK_Party_Clients">
-          <End Type="Model.Clients" Role="Clients" Multiplicity="1" />
+          <End Type="Model.Clients" Role="Clients" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Party" Role="Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clients">
@@ -491,8 +557,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Photos_Employe">
+          <End Type="Model.Employe" Role="Employe" Multiplicity="0..1" />
+          <End Type="Model.Photos" Role="Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="id_employe" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employment_Party">
-          <End Type="Model.Party" Role="Party" Multiplicity="1" />
+          <End Type="Model.Party" Role="Party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Employment" Role="Employment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Party">
@@ -528,7 +608,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Sites">
-          <End Type="Model.Sites" Role="Sites" Multiplicity="1" />
+          <End Type="Model.Sites" Role="Sites" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Party" Role="Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sites">
@@ -540,7 +622,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Party_Type_party">
-          <End Type="Model.Type_party" Role="Type_party" Multiplicity="1" />
+          <End Type="Model.Type_party" Role="Type_party" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Party" Role="Party" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Type_party">
@@ -548,6 +632,18 @@
             </Principal>
             <Dependent Role="Party">
               <PropertyRef Name="id_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Photos_Sites">
+          <End Type="Model.Sites" Role="Sites" Multiplicity="0..1" />
+          <End Type="Model.Photos" Role="Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="id_sites" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="id_sites" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -615,6 +711,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="Model.Photos">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+                <ScalarProperty Name="id_sites" ColumnName="id_sites" />
+                <ScalarProperty Name="binary_photo" ColumnName="binary_photo" />
+                <ScalarProperty Name="path_photo" ColumnName="path_photo" />
+                <ScalarProperty Name="id_photo" ColumnName="id_photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Position">
             <EntityTypeMapping TypeName="Model.Position">
               <MappingFragment StoreEntitySet="Position">
@@ -642,7 +749,6 @@
           <EntitySetMapping Name="Sites">
             <EntityTypeMapping TypeName="Model.Sites">
               <MappingFragment StoreEntitySet="Sites">
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="rent" ColumnName="rent" />
                 <ScalarProperty Name="adress" ColumnName="adress" />
                 <ScalarProperty Name="name_sites" ColumnName="name_sites" />

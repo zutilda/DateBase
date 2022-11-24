@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DateBase
 {
@@ -21,34 +11,34 @@ namespace DateBase
     public partial class PageCreateParty : Page
     {
         private static Party PT;
-         Sites ST;
-         Clients CL;
-         public static bool flagUpdate = false; 
+        Sites ST;
+        Clients CL;
+        public static bool flagUpdate = false;
 
         public void uploadFields()  // метод для заполнения списков
         {
-            if(flagUpdate==false)
+            if (flagUpdate == false)
             {
-            cmbType.ItemsSource = DBase.ZE.Type_party.ToList();
-            cmbType.SelectedValuePath = "id_type";
-            cmbType.DisplayMemberPath = "name_type";
+                cmbType.ItemsSource = DBase.ZE.Type_party.ToList();
+                cmbType.SelectedValuePath = "id_type";
+                cmbType.DisplayMemberPath = "name_type";
 
-            cmbLocation.ItemsSource = DBase.ZE.Sites.ToList();
-            cmbLocation.SelectedValuePath = "id_sites";
-            cmbLocation.DisplayMemberPath = "name_sites";
+                cmbLocation.ItemsSource = DBase.ZE.Sites.ToList();
+                cmbLocation.SelectedValuePath = "id_sites";
+                cmbLocation.DisplayMemberPath = "name_sites";
 
-            cmbClient.ItemsSource = DBase.ZE.Clients.ToList();
-            cmbClient.SelectedValuePath = "id_client";
-            cmbClient.DisplayMemberPath = "surname";
+                cmbClient.ItemsSource = DBase.ZE.Clients.ToList();
+                cmbClient.SelectedValuePath = "id_client";
+                cmbClient.DisplayMemberPath = "surname";
             }
-           
+
         }
 
         public PageCreateParty(Party party)
         {
             InitializeComponent();
-            uploadFields(); 
-            flagUpdate = true; 
+            uploadFields();
+            flagUpdate = true;
             PT = party;
             cmbType.ItemsSource = DBase.ZE.Type_party.ToList();
             cmbType.SelectedValuePath = "id_type";
@@ -62,12 +52,12 @@ namespace DateBase
             cmbClient.SelectedValuePath = "id_client";
             cmbClient.DisplayMemberPath = "surname";
 
-            cmbType.SelectedValue = party.id_type; 
-            cmbLocation.SelectedValue = party.id_sites;  
-            dpDate.SelectedDate = party.date;  
+            cmbType.SelectedValue = party.id_type;
+            cmbLocation.SelectedValue = party.id_sites;
+            dpDate.SelectedDate = party.date;
             cmbClient.SelectedValue = party.id_client;
             ListImployement.Visibility = Visibility.Visible;
-            ListImployement.ItemsSource = DBase.ZE.Employment.Where(x=>x.id_party == PT.id_party).ToList();
+            ListImployement.ItemsSource = DBase.ZE.Employment.Where(x => x.id_party == PT.id_party).ToList();
         }
         public PageCreateParty()
         {
@@ -99,7 +89,7 @@ namespace DateBase
                 {
                     DBase.ZE.Party.Add(PT);
                 }
-               
+
                 DBase.ZE.SaveChanges();
                 MessageBox.Show("Информация о мероприятии добавлена ");
             }
@@ -114,9 +104,9 @@ namespace DateBase
             btnSave_Click(sender, e);
             if (PT != null)
             {
-               
 
-                ClassFrame.newFrame.Navigate(new PageCreateEmployement( PT));
+
+                ClassFrame.newFrame.Navigate(new PageCreateEmployement(PT));
 
             }
             else
@@ -127,7 +117,7 @@ namespace DateBase
         }
 
         private void btnSaveLoc_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             try
             {
                 if (flagUpdate == false)
@@ -137,7 +127,7 @@ namespace DateBase
 
                 ST.name_sites = tbLoc.Text.ToString();
                 ST.adress = tbAdres.Text.ToString();
-                ST.rent = Convert.ToDouble(tbRent.Text.ToString());                
+                ST.rent = Convert.ToDouble(tbRent.Text.ToString());
 
                 if (flagUpdate == false)
                 {
@@ -158,14 +148,14 @@ namespace DateBase
         }
 
         private void btnSaveClient_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             try
             {
                 if (flagUpdate == false)
                 {
                     CL = new Clients();
                 }
-                
+
                 CL.surname = tbSurname.Text.ToString();
                 CL.name = tbName.Text.ToString();
                 CL.patronymic = tbPart.Text.ToString();
@@ -210,10 +200,10 @@ namespace DateBase
             Button button = (Button)sender;
             int id = Convert.ToInt32(button.Uid);
 
-            
+
             Employment employment = DBase.ZE.Employment.FirstOrDefault(x => x.id_employment == id);
 
-                DBase.ZE.Employment.Remove(employment);
+            DBase.ZE.Employment.Remove(employment);
 
             DBase.ZE.SaveChanges();
             MessageBox.Show("Информация удалена");
