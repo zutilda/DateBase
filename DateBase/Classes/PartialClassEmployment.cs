@@ -20,7 +20,7 @@
                     + Services.name_services
                     + "\nСтоимость "
                     + price
-                    + "\n";
+                    + "\n" + Party.date.Date.ToString("D");
 
                 return str;
             }

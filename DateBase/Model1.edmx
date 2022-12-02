@@ -12,7 +12,7 @@
           <Property Name="id_client" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="surname" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="25" Nullable="false" />
-          <Property Name="patronymic" Type="nvarchar" MaxLength="25" />
+          <Property Name="patronymic" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="contacts" Type="nvarchar" MaxLength="16" Nullable="false" />
         </EntityType>
         <EntityType Name="Employe">
@@ -382,7 +382,7 @@
           <Property Name="id_client" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="surname" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="patronymic" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="contacts" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Party" Relationship="Model.FK_Party_Clients" FromRole="Clients" ToRole="Party" />
         </EntityType>

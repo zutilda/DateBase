@@ -19,13 +19,13 @@ namespace DateBase
         public BlankPage()
         {
             InitializeComponent();
-            if (EMP.id_role==2)
+            if (EMP.id_role == 2)
             {
                 btnGetList.Visibility = Visibility.Collapsed;
                 btnGetParty.Visibility = Visibility.Collapsed;
                 btnGetEmployement.Visibility = Visibility.Collapsed;
             }
-            
+
             tbFullName.Text += EMP.name + " " + EMP.surname + " " + EMP.patronymic + " ";
             tbBirthdate.Text += EMP.birthday.ToString("D");
 

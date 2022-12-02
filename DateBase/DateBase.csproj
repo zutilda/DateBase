@@ -50,6 +50,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mobile" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,6 +70,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Images.cs" />
+    <Compile Include="Classes\Pagination.cs" />
     <Compile Include="Classes\PartialClassEmployment.cs" />
     <Compile Include="Pages\EditAccount.xaml.cs">
       <DependentUpon>EditAccount.xaml</DependentUpon>

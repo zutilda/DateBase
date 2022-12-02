@@ -9,11 +9,34 @@
       Title="PageEmployement">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
+        <GroupBox Header="Модуль поиска" Grid.Row="0" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
 
-        <ListView Grid.Row="0" Height="400"  x:Name="ListImployement" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Сотрудник" FontSize="22"/>
+                    <ComboBox Name="cmbEmployee" Width="200" Margin="10, 0, 0, 0" SelectionChanged="cmbEmployee_SelectionChanged">
+                        <ComboBoxItem>Нет</ComboBoxItem>
+                        <ComboBoxItem>Фамилия</ComboBoxItem>
+                        <ComboBoxItem>Имя</ComboBoxItem>
+                        <ComboBoxItem>Отчество</ComboBoxItem>
+                </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Поиск" FontSize="22"/>
+                    <TextBox Name="tbEmployee" Width="200" Margin="10, 0, 0, 0" MaxLength="50" TextChanged="tbEmployee_TextChanged"></TextBox>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <ListView Grid.Row="1" Height="400"  x:Name="ListImployement" Background="MistyRose" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -25,14 +48,44 @@
                         <Grid Width="365" Height="350">
                             <StackPanel>
                                 <TextBlock Text="Занятость сотрудника:" HorizontalAlignment="Center" FontSize="22" FontWeight ="Bold"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding InformEmploe}"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding InformOneEmploe}"/>
                              </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel Grid.Row="1" Margin="10">
+
+
+
+        <StackPanel Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Left" >
+                    <StackPanel Orientation="Horizontal" Margin="5,5,5,5">
+                        <TextBlock Text="Записей на странице" />
+                        <TextBox Name="tboxPageCount" Width="50" TextChanged="tboxPageCount_TextChanged"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal"  Margin="5,5,5,5">
+                        <TextBlock Name="tboxFirst" Uid="first" Text="&lt;&lt; "  Margin="0 0 5 0" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev" Uid="back" Text=" &lt; "  Margin="0 0 5 0" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev1" Uid="1" Text="{Binding  Path = NPage[0]}" Visibility="{Binding Visible[0]}"   Margin="0 0 5 0" Foreground="{Binding Gray[0]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev2" Uid="2" Text="{Binding  Path = NPage[1]}" Visibility="{Binding Visible[1]}"   Margin="0 0 5 0" Foreground="{Binding Gray[1]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev3" Uid="3" Text="{Binding  Path = NPage[2]}" Visibility="{Binding Visible[2]}"   Margin="0 0 5 0" Foreground="{Binding Gray[2]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev4" Uid="4" Text="{Binding  Path = NPage[3]}" Visibility="{Binding Visible[3]}"   Margin="0 0 5 0" Foreground="{Binding Gray[3]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrev5" Uid="5" Text="{Binding  Path = NPage[4]}" Visibility="{Binding Visible[4]}"   Margin="0 0 5 0" Foreground="{Binding Gray[4]}" MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrevNext" Uid="next" Text=" &gt; "  MouseDown="EditingCurrentPage_MouseDown"/>
+                        <TextBlock Name="tboxPrevLast" Uid="last" Text=" &gt;&gt;"   MouseDown="EditingCurrentPage_MouseDown"/>
+                    </StackPanel >
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+        <StackPanel Grid.Row="3" Margin="10">
             <Grid>
                 <Button x:Name="btnBack" Template="{StaticResource btnPage}" HorizontalAlignment="Left"  Content="Назад" Click="btnBack_Click" />
                 <Button x:Name="btnAdd"  Template="{StaticResource btnPage}" HorizontalAlignment="Right" Content="Добавить" Click="btnAdd_Click" />

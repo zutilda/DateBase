@@ -14,7 +14,7 @@ namespace DateBase
         /// <returns>Объект типа BitmapImage (изображение)</returns>
         public static BitmapImage GetBitmapImage(Photos photo)
         {
-            if (photo != null)
+            if (photo != null&& photo.binary_photo!=null)
             {
                 byte[] array = photo.binary_photo;
                 BitmapImage image = new BitmapImage();
@@ -28,6 +28,10 @@ namespace DateBase
                 }
 
                 return image;
+            }
+            else if (photo != null && photo.path_photo != null)
+            {
+                return new BitmapImage(new Uri(photo.path_photo, UriKind.RelativeOrAbsolute));
             }
 
             return new BitmapImage(new Uri("\\image\\logotip.png", UriKind.RelativeOrAbsolute));
