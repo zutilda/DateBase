@@ -69,5 +69,7 @@ namespace DateBase
             BA.RepeatBehavior = RepeatBehavior.Forever;
             btn.Background.BeginAnimation(SolidColorBrush.ColorProperty, BA);
         }
+
+       
     }
 }
