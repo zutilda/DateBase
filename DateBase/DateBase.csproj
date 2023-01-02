@@ -72,6 +72,9 @@
     <Compile Include="Classes\Images.cs" />
     <Compile Include="Classes\Pagination.cs" />
     <Compile Include="Classes\PartialClassEmployment.cs" />
+    <Compile Include="PageMarketing.xaml.cs">
+      <DependentUpon>PageMarketing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditAccount.xaml.cs">
       <DependentUpon>EditAccount.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
     <Compile Include="Type_party.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="PageMarketing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\EditAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

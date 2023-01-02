@@ -33,5 +33,10 @@ namespace DateBase
         {
             ClassFrame.newFrame.Navigate(new PageLogIn());
         }
+
+        private void btnMarketing_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.newFrame.Navigate(new PageMarketing());
+        }
     }
 }

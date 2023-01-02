@@ -15,15 +15,18 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal" Background="DarkSlateBlue" >
             <Image Source="image\logotip.png" Margin="10" Height="145" Width="260"/>
-            <StackPanel Background="DarkSlateBlue" HorizontalAlignment="Center">
-                <TextBlock  Text="Студия организации праздников  'Party Time'" VerticalAlignment="Center" FontSize="24" Margin="50,40,60,0" Foreground="MistyRose"/>
-                <StackPanel Margin="0,40, 0, 0"  Orientation="Horizontal" Background="DarkSlateBlue" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <StackPanel Background="DarkSlateBlue" HorizontalAlignment="Center" Orientation="Vertical">
+                <TextBlock  Text="Студия организации праздников  'Party Time'" VerticalAlignment="Center" FontSize="24" Margin="50,5,60,0" Foreground="MistyRose"/>
+                <StackPanel Margin="0,30, 0, 0"  Orientation="Horizontal" Background="DarkSlateBlue" VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <StackPanel  Margin="0,0,40, 0">
                         <Button x:Name="btnAuth" Content="Авторизация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom" Click="btnAuth_Click"/>
                      </StackPanel>
                     <StackPanel >
                         <Button x:Name="btnLog" Content="Регистрация" Template="{StaticResource btnMain}" VerticalAlignment="Bottom" Click="btnLog_Click"/>
                     </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="0,10,0,0">
+                    <Button x:Name="btnMarketing" Content="Реклама" Template="{StaticResource btnMain}" VerticalAlignment="Bottom" Click="btnMarketing_Click" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>
